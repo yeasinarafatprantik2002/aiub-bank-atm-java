@@ -1,4 +1,4 @@
-package Frontend.atm;
+package Classes.atm;
 
 import javax.swing.*;
 import java.awt.*;

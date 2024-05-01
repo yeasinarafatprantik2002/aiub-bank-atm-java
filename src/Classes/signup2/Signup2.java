@@ -1,10 +1,12 @@
-package Frontend.signup2;
+package Classes.signup2;
 
 import javax.swing.*;
+
+import Classes.signup3.Signup3;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Frontend.signup3.Signup3;
 
 public class Signup2 extends JFrame {
     JComboBox comboBox, comboBox2, comboBox3, comboBox4, comboBox5;
@@ -12,8 +14,9 @@ public class Signup2 extends JFrame {
     JRadioButton r1, r2, e1, e2;
     JButton next;
     String formno;
+    String data;
 
-    public Signup2(String formno) {
+    public Signup2(String formno, String data) {
         super("APPLICATION FORM");
 
         ImageIcon i1 = new ImageIcon(
@@ -25,6 +28,7 @@ public class Signup2 extends JFrame {
         add(image);
 
         this.formno = formno;
+        this.data = data;
 
         JLabel l1 = new JLabel("Page 2 :-");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -41,7 +45,7 @@ public class Signup2 extends JFrame {
         l3.setBounds(100, 120, 100, 30);
         add(l3);
 
-        String religion[] = { "Hindu", "Muslim", "Sikh", "Christian", "Other" };
+        String religion[] = { "Muslim", "Hindu", "Christian", "Other" };
         comboBox = new JComboBox(religion);
         comboBox.setBackground(new Color(252, 208, 76));
         comboBox.setFont(new Font("Raleway", Font.BOLD, 14));
@@ -96,7 +100,7 @@ public class Signup2 extends JFrame {
         comboBox5.setBounds(350, 340, 320, 30);
         add(comboBox5);
 
-        JLabel l8 = new JLabel("PAN Number : ");
+        JLabel l8 = new JLabel("NID Number : ");
         l8.setFont(new Font("Raleway", Font.BOLD, 18));
         l8.setBounds(100, 390, 150, 30);
         add(l8);
@@ -106,7 +110,7 @@ public class Signup2 extends JFrame {
         textPan.setBounds(350, 390, 320, 30);
         add(textPan);
 
-        JLabel l9 = new JLabel("Aadhar Number : ");
+        JLabel l9 = new JLabel("Nominee NID Number : ");
         l9.setFont(new Font("Raleway", Font.BOLD, 18));
         l9.setBounds(100, 440, 180, 30);
         add(l9);
@@ -165,8 +169,32 @@ public class Signup2 extends JFrame {
         next.setBounds(570, 640, 100, 30);
         next.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                
-                new Signup3(formno);
+                String religion = (String) comboBox.getSelectedItem();
+                String category = (String) comboBox2.getSelectedItem();
+                String income = (String) comboBox3.getSelectedItem();
+                String education = (String) comboBox4.getSelectedItem();
+                String occupation = (String) comboBox5.getSelectedItem();
+                String pan = textPan.getText();
+                String aadhar = textAadhar.getText();
+                String senior = null;
+                if (r1.isSelected()) {
+                    senior = "Yes";
+                } else if (r2.isSelected()) {
+                    senior = "No";
+                }
+                String existing = null;
+                if (e1.isSelected()) {
+                    existing = "Yes";
+                } else if (e2.isSelected()) {
+                    existing = "No";
+                }
+
+                String data1 = data + "\nReligion : " + religion + "\nCategory : " + category + "\nIncome : " + income
+                        + "\nEducation : " + education + "\nOccupation : " + occupation + "\nNID Number : " + pan
+                        + "\nNominee NID Number : " + aadhar + "\nSenior Citizen : " + senior + "\nExisting Account : "
+                        + existing;
+
+                new Signup3(formno, data1);
                 setVisible(false);
             }
         });

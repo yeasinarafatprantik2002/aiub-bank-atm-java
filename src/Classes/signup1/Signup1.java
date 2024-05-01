@@ -1,11 +1,13 @@
-package Frontend.signup1;
+package Classes.signup1;
 
 import javax.swing.*;
+
+import Classes.signup2.Signup2;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import Frontend.signup2.Signup2;
 
 public class Signup1 extends JFrame {
     JRadioButton r1, r2, m1, m2, m3;
@@ -15,6 +17,7 @@ public class Signup1 extends JFrame {
     Random ran = new Random();
     long first4 = (ran.nextLong() % 9000L) + 1000L;
     String first = " " + Math.abs(first4);
+    String data;
 
     public Signup1() {
         super("APPLICATION FORM");
@@ -174,35 +177,37 @@ public class Signup1 extends JFrame {
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // String name = textName.getText();
-                // String fname = textFname.getText();
-                // String email = textEmail.getText();
-                // String add = textAdd.getText();
-                // String city = textcity.getText();
-                // String state = textState.getText();
-                // String pin = textPin.getText();
-                // String gender = null;
-                // if (r1.isSelected()) {
-                // gender = r1.getText();
-                // } else if (r2.isSelected()) {
-                // gender = r2.getText();
-                // } else {
-                // System.out.println("Please select");
-                // }
-                // String ms = null;
-                // if (m1.isSelected()) {
-                // ms = m1.getText();
-                // } else if (m2.isSelected()) {
-                // ms = m2.getText();
-                // } else if (m3.isSelected()) {
-                // ms = m3.getText();
-                // } else {
-                // System.out.println("Please select");
-                // }
+                String name = textName.getText();
+                String fname = textFname.getText();
+                String email = textEmail.getText();
+                String add = textAdd.getText();
+                String city = textcity.getText();
+                String state = textState.getText();
+                String pin = textPin.getText();
+                String gender = null;
+                if (r1.isSelected()) {
+                    gender = r1.getText();
+                } else if (r2.isSelected()) {
+                    gender = r2.getText();
+                } else {
+                    System.out.println("Please select");
+                }
+                String ms = null;
+                if (m1.isSelected()) {
+                    ms = m1.getText();
+                } else if (m2.isSelected()) {
+                    ms = m2.getText();
+                } else if (m3.isSelected()) {
+                    ms = m3.getText();
+                } else {
+                    System.out.println("Please select");
+                }
 
-                // TODO: Add the data to the database
+                data = "\nName : " + name + "\nFather's Name : " + fname + "\nGender :" + gender + "\nEmail : " + email
+                        + "\nMarital Status : " + ms + "\nAddress : " + add + "\nCity : " + city + "\nState : " + state
+                        + "\nPin Code : " + pin;
 
-                new Signup2(first);
+                new Signup2(first, data);
                 setVisible(false);
 
             }

@@ -1,11 +1,13 @@
-package Frontend.login;
+package Classes.login;
 
 import javax.swing.*;
+
+import Classes.atm.Atm;
+import Classes.signup1.Signup1;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Frontend.signup1.Signup1;
-import Frontend.atm.Atm;
 
 public class Login extends JFrame {
 
@@ -14,9 +16,12 @@ public class Login extends JFrame {
         JPasswordField passwordField3;
 
         JButton button1, button2, button3, button4;
+        String pin, cardno;
 
-        public Login() {
+        public Login(String cardno, String pin) {
                 super("Bank Management System");
+                this.cardno = cardno;
+                this.pin = pin;
 
                 ImageIcon i1 = new ImageIcon(
                                 "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/bank.png");
@@ -49,6 +54,7 @@ public class Login extends JFrame {
                 textField2 = new JTextField(15);
                 textField2.setBounds(325, 190, 230, 30);
                 textField2.setFont(new Font("Arial", Font.BOLD, 14));
+                textField2.setText(cardno);
                 add(textField2);
 
                 label3 = new JLabel("PIN: ");
@@ -60,6 +66,7 @@ public class Login extends JFrame {
                 passwordField3 = new JPasswordField(15);
                 passwordField3.setBounds(325, 250, 230, 30);
                 passwordField3.setFont(new Font("Arial", Font.BOLD, 14));
+                passwordField3.setText(pin);
                 add(passwordField3);
 
                 button1 = new JButton("SIGN IN");

@@ -1,12 +1,15 @@
-package Frontend.signup3;
+package Classes.signup3;
 
-import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.*;
+
+import Classes.login.Login;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.server.ExportException;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.*;
 
 public class Signup3 extends JFrame {
 
@@ -14,10 +17,12 @@ public class Signup3 extends JFrame {
     JCheckBox c1, c2, c3, c4, c5, c6;
     JButton s, c;
     String formno;
+    String data;
 
-    public Signup3(String formno) {
+    public Signup3(String formno, String data) {
 
         this.formno = formno;
+        this.data = data;
 
         ImageIcon i1 = new ImageIcon(
                 "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/bank.png");
@@ -170,7 +175,79 @@ public class Signup3 extends JFrame {
         s.setBackground(Color.BLACK);
         s.setForeground(Color.WHITE);
         s.setBounds(250, 720, 100, 30);
-        // s.addActionListener(this);
+        s.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String accountType = null;
+                if (r1.isSelected()) {
+                    accountType = "Saving Account";
+                } else if (r2.isSelected()) {
+                    accountType = "Fixed Deposit Account";
+                } else if (r3.isSelected()) {
+                    accountType = "Current Account";
+                } else if (r4.isSelected()) {
+                    accountType = "Recurring Deposit Account";
+                } else {
+                    accountType = "Not Selected";
+                }
+
+                Random random = new Random();
+                long first7 = (random.nextLong() % 90000000L) + 5040936000000000L;
+                String cardNo = "" + Math.abs(first7);
+
+                long first3 = (random.nextLong() % 9000L) + 1000L;
+                String pin = "" + Math.abs(first3);
+
+                String services = "";
+                if (c1.isSelected()) {
+                    services += "ATM Card, ";
+                }
+                if (c2.isSelected()) {
+                    services += "Internet Banking, ";
+                }
+                if (c3.isSelected()) {
+                    services += "Mobile Banking, ";
+                }
+                if (c4.isSelected()) {
+                    services += "Email Alerts, ";
+                }
+                if (c5.isSelected()) {
+                    services += "Cheque Book, ";
+                }
+                if (c6.isSelected()) {
+                    services += "E-Statement";
+                }
+
+                String data1 = data + "\nAccount Type : " + accountType + "\nCard Number : " + cardNo + "\nPIN : " + pin
+                        + "\nServices Required : " + services;
+
+                try {
+                    File file = new File(
+                            "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/db/db.txt");
+                    FileReader fr = new FileReader(file);
+
+                    Scanner sc = new Scanner(fr);
+                    String prevData = "";
+                    while (sc.hasNextLine()) {
+                        prevData += sc.nextLine() + "\n";
+                    }
+                    fr.close();
+                    sc.close();
+
+                    FileWriter fw = new FileWriter(file);
+                    fw.write(prevData + data1);
+                    fw.close();
+
+                    new Login(cardNo, pin);
+                    setVisible(false);
+
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+
+                }
+
+            }
+
+        });
         add(s);
 
         c = new JButton("Cancel");
