@@ -1,4 +1,4 @@
-package Classes.atm;
+package classes.atm;
 
 import javax.swing.*;
 import java.awt.*;

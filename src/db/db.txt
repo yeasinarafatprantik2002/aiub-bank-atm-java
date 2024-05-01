@@ -22,3 +22,49 @@ Account Type : Saving Account
 Card Number : 5040935977314984
 PIN : 7428
 Services Required : ATM Card, Mobile Banking, 
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040935990105391
+PIN : 5432
+Services Required : 
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040936080404013
+PIN : 695
+Services Required : 

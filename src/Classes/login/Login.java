@@ -1,9 +1,10 @@
-package Classes.login;
+package classes.login;
 
 import javax.swing.*;
 
-import Classes.atm.Atm;
-import Classes.signup1.Signup1;
+import classes.atm.Atm;
+import classes.signup1.Signup1;
+import helpers.GetPathName;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,16 +24,16 @@ public class Login extends JFrame {
                 this.cardno = cardno;
                 this.pin = pin;
 
-                ImageIcon i1 = new ImageIcon(
-                                "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/bank.png");
+                String path = GetPathName.getPathName();
+
+                ImageIcon i1 = new ImageIcon(path + "/public/images/bank.png");
                 Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
                 ImageIcon i3 = new ImageIcon(i2);
                 JLabel image = new JLabel(i3);
                 image.setBounds(350, 10, 100, 100);
                 add(image);
 
-                ImageIcon ii1 = new ImageIcon(
-                                "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/card.png");
+                ImageIcon ii1 = new ImageIcon(path + "/public/images/card.png");
                 Image ii2 = ii1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
                 ImageIcon ii3 = new ImageIcon(ii2);
                 JLabel iimage = new JLabel(ii3);
@@ -129,8 +130,7 @@ public class Login extends JFrame {
                 });
                 add(button4);
 
-                ImageIcon iii1 = new ImageIcon(
-                                "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/backbg.png");
+                ImageIcon iii1 = new ImageIcon(path + "/public/images/backbg.png");
                 Image iii2 = iii1.getImage().getScaledInstance(850, 480, Image.SCALE_DEFAULT);
                 ImageIcon iii3 = new ImageIcon(iii2);
                 JLabel iiimage = new JLabel(iii3);

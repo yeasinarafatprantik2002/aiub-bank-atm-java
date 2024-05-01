@@ -1,8 +1,10 @@
-package Classes.signup1;
+package classes.signup1;
 
 import javax.swing.*;
 
-import Classes.signup2.Signup2;
+import classes.signup2.Signup2;
+
+import helpers.GetPathName;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,9 +23,10 @@ public class Signup1 extends JFrame {
 
     public Signup1() {
         super("APPLICATION FORM");
+        String path = GetPathName.getPathName();
 
         ImageIcon i1 = new ImageIcon(
-                "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/public/images/bank.png");
+                path + "/public/images/bank.png");
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
