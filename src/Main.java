@@ -1,6 +1,6 @@
 import javax.swing.UIManager;
 
-import classes.login.Login;
+import frontend.login.Login;
 
 public class Main {
     public static void main(String[] args) {

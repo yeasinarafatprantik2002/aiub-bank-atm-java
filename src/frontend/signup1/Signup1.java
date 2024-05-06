@@ -1,9 +1,8 @@
-package classes.signup1;
+package frontend.signup1;
 
 import javax.swing.*;
 
-import classes.signup2.Signup2;
-
+import frontend.signup2.Signup2;
 import helpers.GetPathName;
 
 import java.awt.*;

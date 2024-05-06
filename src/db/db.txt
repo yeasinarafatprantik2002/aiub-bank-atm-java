@@ -1,1 +1,95 @@
 ------Users Data:-----
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040936089751379
+PIN : 8995
+Services Required : 
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040936059024478
+PIN : 5540
+Services Required : 
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040935966659442
+PIN : 1699
+Services Required : 
+
+Name : 
+Father's Name : 
+Gender :null
+Email : 
+Marital Status : null
+Address : 
+City : 
+State : 
+Pin Code : 
+Religion : Muslim
+Category : General
+Income : Null
+Education : Non-Graduate
+Occupation : Salaried
+NID Number : 
+Nominee NID Number : 
+Senior Citizen : null
+Existing Account : null
+Account Type : Not Selected
+Card Number : 5040936028629613
+PIN : 6723
+Services Required : 
+
+src/db/db.txt

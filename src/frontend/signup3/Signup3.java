@@ -1,9 +1,8 @@
-package classes.signup3;
+package frontend.signup3;
 
 import javax.swing.*;
 
-import classes.login.Login;
-
+import frontend.login.Login;
 import helpers.GetPathName;
 
 import java.awt.*;
@@ -224,8 +223,7 @@ public class Signup3 extends JFrame {
                         + "\nServices Required : " + services;
 
                 try {
-                    File file = new File(
-                            "/Users/yaprantik/Developer/code/WorkPlace/java/Aiub Java Project/sonar-bank/src/db/db.txt");
+                    File file = new File(path + "/db/db.txt");
                     FileReader fr = new FileReader(file);
 
                     Scanner sc = new Scanner(fr);

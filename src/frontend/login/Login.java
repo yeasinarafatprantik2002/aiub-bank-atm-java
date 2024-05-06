@@ -1,9 +1,9 @@
-package classes.login;
+package frontend.login;
 
 import javax.swing.*;
 
-import classes.atm.Atm;
-import classes.signup1.Signup1;
+import frontend.atm.Atm;
+import frontend.signup1.Signup1;
 import helpers.GetPathName;
 
 import java.awt.*;
