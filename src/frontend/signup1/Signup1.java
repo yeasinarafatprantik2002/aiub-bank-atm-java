@@ -12,13 +12,33 @@ import java.util.Random;
 
 public class Signup1 extends JFrame {
     JRadioButton r1, r2, m1, m2, m3;
-    JButton next;
+    JButton next, cancel;
+    JComboBox date, month, year;
 
     JTextField textName, textFname, textEmail, textAdd, textcity, textState, textPin;
     Random ran = new Random();
-    long first4 = (ran.nextLong() % 9000L) + 1000L;
-    String first = " " + Math.abs(first4);
+    long accountNumber4 = (ran.nextLong() % 9000L) + 1000L;
+    String accountNumber = " " + Math.abs(accountNumber4);
     String data;
+    Signup1 signup1 = this;
+
+    private String dates[] = { "1", "2", "3", "4", "5",
+            "6", "7", "8", "9", "10",
+            "11", "12", "13", "14", "15",
+            "16", "17", "18", "19", "20",
+            "21", "22", "23", "24", "25",
+            "26", "27", "28", "29", "30",
+            "31" };
+    private String months[] = { "Jan", "feb", "Mar", "Apr",
+            "May", "Jun", "July", "Aug",
+            "Sup", "Oct", "Nov", "Dec" };
+    private String years[] = { "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
+            "1999", "2000", "2001", "2002",
+            "2003", "2004", "2005", "2006",
+            "2007", "2008", "2009", "2010",
+            "2011", "2012", "2013", "2014",
+            "2015", "2016", "2017", "2018",
+            "2019", "2020" };
 
     public Signup1() {
         super("APPLICATION FORM");
@@ -32,7 +52,7 @@ public class Signup1 extends JFrame {
         image.setBounds(25, 10, 100, 100);
         add(image);
 
-        JLabel label1 = new JLabel("APPLICATION FORM NO." + first);
+        JLabel label1 = new JLabel("APPLICATION FORM NO." + accountNumber);
         label1.setBounds(160, 20, 600, 40);
         label1.setFont(new Font("Raleway", Font.BOLD, 38));
         add(label1);
@@ -71,6 +91,24 @@ public class Signup1 extends JFrame {
         DOB.setFont(new Font("Raleway", Font.BOLD, 20));
         DOB.setBounds(100, 340, 200, 30);
         add(DOB);
+
+        date = new JComboBox(dates);
+        date.setBackground(new Color(252, 208, 76));
+        date.setFont(new Font("Raleway", Font.BOLD, 14));
+        date.setBounds(300, 340, 60, 30);
+        add(date);
+
+        month = new JComboBox(months);
+        month.setBackground(new Color(252, 208, 76));
+        month.setFont(new Font("Raleway", Font.BOLD, 14));
+        month.setBounds(370, 340, 60, 30);
+        add(month);
+
+        year = new JComboBox(years);
+        year.setBackground(new Color(252, 208, 76));
+        year.setFont(new Font("Raleway", Font.BOLD, 14));
+        year.setBounds(440, 340, 80, 30);
+        add(year);
 
         JLabel labelG = new JLabel("Gender");
         labelG.setFont(new Font("Raleway", Font.BOLD, 20));
@@ -185,7 +223,7 @@ public class Signup1 extends JFrame {
                 String add = textAdd.getText();
                 String city = textcity.getText();
                 String state = textState.getText();
-                String pin = textPin.getText();
+                String pinCode = textPin.getText();
                 String gender = null;
                 if (r1.isSelected()) {
                     gender = r1.getText();
@@ -205,16 +243,31 @@ public class Signup1 extends JFrame {
                     System.out.println("Please select");
                 }
 
-                data = "\nName : " + name + "\nFather's Name : " + fname + "\nGender :" + gender + "\nEmail : " + email
-                        + "\nMarital Status : " + ms + "\nAddress : " + add + "\nCity : " + city + "\nState : " + state
-                        + "\nPin Code : " + pin;
+                String date1 = (String) date.getSelectedItem();
+                String month1 = (String) month.getSelectedItem();
+                String year1 = (String) year.getSelectedItem();
+                String dob = date1 + "/" + month1 + "/" + year1;
 
-                new Signup2(first, data);
+                new Signup2(accountNumber, name, fname, email, add, city, state, pinCode, gender, ms, dob, signup1);
+
                 setVisible(false);
 
             }
         });
         add(next);
+
+        cancel = new JButton("Cancel");
+        cancel.setFont(new Font("Raleway", Font.BOLD, 14));
+        cancel.setBackground(Color.BLACK);
+        cancel.setForeground(Color.WHITE);
+        cancel.setBounds(500, 710, 100, 30);
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        add(cancel);
 
         getContentPane().setBackground(new Color(222, 255, 228));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

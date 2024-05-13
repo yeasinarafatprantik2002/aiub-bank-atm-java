@@ -3,7 +3,12 @@ package frontend.signup3;
 import javax.swing.*;
 
 import frontend.login.Login;
+import frontend.signup1.Signup1;
+import frontend.signup2.Signup2;
 import helpers.GetPathName;
+import db.dbConfig.DbConfig;
+import backend.signup.SignupForm;
+import frontend.dashboardLogin.DashboardLogin;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,14 +21,57 @@ public class Signup3 extends JFrame {
 
     JRadioButton r1, r2, r3, r4;
     JCheckBox c1, c2, c3, c4, c5, c6;
-    JButton s, c;
+    JButton s, c, back;
     String formno;
     String data;
+    String accountNumer;
+    String name;
+    String fname;
+    String email;
+    String add;
+    String city;
+    String state;
+    String pinCode;
+    String gender;
+    String ms;
+    String dob;
+    String religion;
+    String category;
+    String income;
+    String education;
+    String occupation;
+    String nid;
+    String nnid;
+    String senior;
+    String existing;
 
-    public Signup3(String formno, String data) {
+    public Signup3(String accountNumer, String name, String fname, String email, String add,
+            String city, String state,
+            String pinCode, String gender, String ms, String dob, String religion, String category, String income,
+            String education, String occupation, String pan, String aadhar, String senior, String existing,
+            Signup2 signup2) {
 
-        this.formno = formno;
-        this.data = data;
+        super("APPLICATION FORM");
+        this.accountNumer = accountNumer;
+        this.name = name;
+        this.fname = fname;
+        this.email = email;
+        this.add = add;
+        this.city = city;
+        this.state = state;
+        this.pinCode = pinCode;
+        this.gender = gender;
+        this.ms = ms;
+        this.dob = dob;
+        this.religion = religion;
+        this.category = category;
+        this.income = income;
+        this.education = education;
+        this.occupation = occupation;
+        this.nid = pan;
+        this.nnid = aadhar;
+        this.senior = senior;
+        this.existing = existing;
 
         String path = GetPathName.getPathName();
 
@@ -79,10 +127,20 @@ public class Signup3 extends JFrame {
         buttonGroup.add(r3);
         buttonGroup.add(r4);
 
+        JLabel l14 = new JLabel("Password:");
+        l14.setFont(new Font("Raleway", Font.BOLD, 18));
+        l14.setBounds(100, 260, 200, 30);
+        add(l14);
+
         JLabel l4 = new JLabel("Card Number:");
         l4.setFont(new Font("Raleway", Font.BOLD, 18));
         l4.setBounds(100, 300, 200, 30);
         add(l4);
+
+        JPasswordField pf = new JPasswordField();
+        pf.setFont(new Font("Raleway", Font.BOLD, 14));
+        pf.setBounds(330, 260, 200, 30);
+        add(pf);
 
         JLabel l5 = new JLabel("(Your 16-digit Card Number)");
         l5.setFont(new Font("Raleway", Font.BOLD, 12));
@@ -179,6 +237,7 @@ public class Signup3 extends JFrame {
         s.setBounds(250, 720, 100, 30);
         s.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String password = new String(pf.getPassword());
                 String accountType = null;
                 if (r1.isSelected()) {
                     accountType = "Saving Account";
@@ -197,7 +256,7 @@ public class Signup3 extends JFrame {
                 String cardNo = "" + Math.abs(first7);
 
                 long first3 = (random.nextLong() % 9000L) + 1000L;
-                String pin = "" + Math.abs(first3);
+                String pinNumber = "" + Math.abs(first3);
 
                 String services = "";
                 if (c1.isSelected()) {
@@ -219,37 +278,34 @@ public class Signup3 extends JFrame {
                     services += "E-Statement";
                 }
 
-                String data1 = data + "\nAccount Type : " + accountType + "\nCard Number : " + cardNo + "\nPIN : " + pin
-                        + "\nServices Required : " + services;
+                if (c7.isSelected()) {
+                    SignupForm user = new SignupForm(accountNumer, password, name, fname, gender, email, ms,
+                            add, city,
+                            state, pinCode, religion, category, income, education, occupation, nid, nnid, senior,
+                            existing,
+                            accountType, cardNo, pinNumber, services, dob, "0");
+                    new DbConfig(user).save();
 
-                try {
-                    File file = new File(path + "/db/db.txt");
-                    FileReader fr = new FileReader(file);
-
-                    Scanner sc = new Scanner(fr);
-                    String prevData = "";
-                    while (sc.hasNextLine()) {
-                        prevData += sc.nextLine() + "\n";
-                    }
-                    fr.close();
-                    sc.close();
-
-                    FileWriter fw = new FileWriter(file);
-                    fw.write(prevData + data1);
-                    fw.close();
-
-                    new Login(cardNo, pin);
+                    new DashboardLogin(accountNumer.trim(), password.trim());
                     setVisible(false);
-
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-
                 }
-
             }
 
         });
         add(s);
+
+        back = new JButton("Back");
+        back.setFont(new Font("Raleway", Font.BOLD, 14));
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
+        back.setBounds(100, 720, 100, 30);
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                signup2.setVisible(true);
+                setVisible(false);
+            }
+        });
+        add(back);
 
         c = new JButton("Cancel");
         c.setFont(new Font("Raleway", Font.BOLD, 14));

@@ -3,6 +3,7 @@ package frontend.signup2;
 import javax.swing.*;
 
 import frontend.signup3.Signup3;
+import frontend.signup1.Signup1;
 import helpers.GetPathName;
 
 import java.awt.*;
@@ -13,11 +14,23 @@ public class Signup2 extends JFrame {
     JComboBox comboBox, comboBox2, comboBox3, comboBox4, comboBox5;
     JTextField textPan, textAadhar;
     JRadioButton r1, r2, e1, e2;
-    JButton next;
-    String formno;
-    String data;
+    JButton next, cancel, back;
+    String accountNumber;
+    String name;
+    String fname;
+    String email;
+    String add;
+    String city;
+    String state;
+    String pinCode;
+    String gender;
+    String ms;
+    String dob;
+    Signup1 signup1;
+    Signup2 signup2 = this;
 
-    public Signup2(String formno, String data) {
+    public Signup2(String accountNumber, String name, String fname, String email, String add, String city, String state,
+            String pinCode, String gender, String ms, String dob, Signup1 signup1) {
         super("APPLICATION FORM");
         String path = GetPathName.getPathName();
 
@@ -28,8 +41,18 @@ public class Signup2 extends JFrame {
         image.setBounds(150, 5, 100, 100);
         add(image);
 
-        this.formno = formno;
-        this.data = data;
+        this.accountNumber = accountNumber;
+        this.name = name;
+        this.fname = fname;
+        this.email = email;
+        this.add = add;
+        this.city = city;
+        this.state = state;
+        this.pinCode = pinCode;
+        this.gender = gender;
+        this.ms = ms;
+        this.dob = dob;
+        this.signup1 = signup1;
 
         JLabel l1 = new JLabel("Page 2 :-");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -158,7 +181,7 @@ public class Signup2 extends JFrame {
         l12.setBounds(700, 10, 100, 30);
         add(l12);
 
-        JLabel l13 = new JLabel(formno);
+        JLabel l13 = new JLabel(accountNumber);
         l13.setFont(new Font("Raleway", Font.BOLD, 14));
         l13.setBounds(760, 10, 60, 30);
         add(l13);
@@ -190,16 +213,38 @@ public class Signup2 extends JFrame {
                     existing = "No";
                 }
 
-                String data1 = data + "\nReligion : " + religion + "\nCategory : " + category + "\nIncome : " + income
-                        + "\nEducation : " + education + "\nOccupation : " + occupation + "\nNID Number : " + pan
-                        + "\nNominee NID Number : " + aadhar + "\nSenior Citizen : " + senior + "\nExisting Account : "
-                        + existing;
-
-                new Signup3(formno, data1);
+                new Signup3(accountNumber, name, fname, email, add, city, state, pinCode, gender, ms, dob, religion,
+                        category, income, education, occupation, pan, aadhar, senior, existing,
+                        signup2);
                 setVisible(false);
             }
         });
         add(next);
+
+        back = new JButton("Back");
+        back.setFont(new Font("Raleway", Font.BOLD, 14));
+        back.setBackground(Color.WHITE);
+        back.setForeground(Color.BLACK);
+        back.setBounds(450, 640, 100, 30);
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                signup1.setVisible(true);
+                setVisible(false);
+            }
+        });
+        add(back);
+
+        cancel = new JButton("Cancel");
+        cancel.setFont(new Font("Raleway", Font.BOLD, 14));
+        cancel.setBackground(Color.WHITE);
+        cancel.setForeground(Color.BLACK);
+        cancel.setBounds(330, 640, 100, 30);
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
+        add(cancel);
 
         setLayout(null);
         setSize(850, 750);
