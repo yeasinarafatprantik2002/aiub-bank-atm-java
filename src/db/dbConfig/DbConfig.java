@@ -1,405 +1,164 @@
 package db.dbConfig;
 
-import backend.signup.SignupForm;
+import backend.signup.UserFrom;
 import helpers.GetPathName;
+import helpers.interfaces.iUserOperations.IUserOperations;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
-public class DbConfig {
-    private SignupForm signupForm;
+public class DbConfig implements IUserOperations {
+    private UserFrom userFrom;
 
     public DbConfig() {
     }
 
-    public DbConfig(SignupForm signupForm) {
-        this.signupForm = signupForm;
+    public DbConfig(UserFrom userFrom) {
+        this.userFrom = userFrom;
     }
 
     public void save() {
         // Save data to database
         String path = GetPathName.getPathName();
-        try (PrintWriter writer = new PrintWriter(new FileWriter(path + "/db/db.txt", true))) {
-            writer.print(signupForm);
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            writer.write(userFrom.toString());
+            writer.newLine();
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public SignupForm findUserByAccNoAndPass(String accountNumber, String Password) {
+    public UserFrom findUserByAccNoAndPass(String accountNumber, String password) {
         // Find user by account number and password
         String path = GetPathName.getPathName();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path + "/db/db.txt"))) {
-            String accountNumberLine;
-            String passsworLne;
-            String pinNumberLine;
-            String cardNoLine;
-            String stateLine;
-            String cityLine;
-            String pinCodeLine;
-            String addLine;
-            String emailLine;
-            String maritalStatusLine;
-            String fnameLine;
-            String nameLine;
-            String genderLine;
-            String religionLine;
-            String categoryLine;
-            String incomeLine;
-            String educationLine;
-            String occupationLine;
-            String panLine;
-            String aadharLine;
-            String seniorLine;
-            String existingLine;
-            String accountTypeLine;
-            String servicesLine;
-            String dateLine;
-            String balanceLine;
-
-            while ((accountNumberLine = reader.readLine()) != null &&
-                    (passsworLne = reader.readLine()) != null &&
-                    (pinNumberLine = reader.readLine()) != null &&
-                    (cardNoLine = reader.readLine()) != null &&
-                    (stateLine = reader.readLine()) != null &&
-                    (cityLine = reader.readLine()) != null &&
-                    (pinCodeLine = reader.readLine()) != null &&
-                    (addLine = reader.readLine()) != null &&
-                    (emailLine = reader.readLine()) != null &&
-                    (maritalStatusLine = reader.readLine()) != null &&
-                    (fnameLine = reader.readLine()) != null &&
-                    (nameLine = reader.readLine()) != null &&
-                    (genderLine = reader.readLine()) != null &&
-                    (religionLine = reader.readLine()) != null &&
-                    (categoryLine = reader.readLine()) != null &&
-                    (incomeLine = reader.readLine()) != null &&
-                    (educationLine = reader.readLine()) != null &&
-                    (occupationLine = reader.readLine()) != null &&
-                    (panLine = reader.readLine()) != null &&
-                    (aadharLine = reader.readLine()) != null &&
-                    (seniorLine = reader.readLine()) != null &&
-                    (existingLine = reader.readLine()) != null &&
-                    (accountTypeLine = reader.readLine()) != null &&
-                    (servicesLine = reader.readLine()) != null &&
-                    (dateLine = reader.readLine()) != null &&
-                    (balanceLine = reader.readLine()) != null) {
-                if (!accountNumberLine.isEmpty() && !passsworLne.isEmpty() && !pinNumberLine.isEmpty()
-                        && !cardNoLine.isEmpty() && !stateLine.isEmpty() && !cityLine.isEmpty()
-                        && !pinCodeLine.isEmpty() && !addLine.isEmpty() && !emailLine.isEmpty()
-                        && !maritalStatusLine.isEmpty() &&
-                        !fnameLine.isEmpty()
-                        && !nameLine.isEmpty() && !genderLine.isEmpty() && !religionLine.isEmpty()
-                        && !categoryLine.isEmpty() && !incomeLine.isEmpty() && !educationLine.isEmpty()
-                        && !occupationLine.isEmpty() &&
-                        !panLine.isEmpty() && !aadharLine.isEmpty() && !seniorLine.isEmpty()
-                        && !existingLine.isEmpty() && !accountTypeLine.isEmpty() && !servicesLine.isEmpty()
-                        && !dateLine.isEmpty() && !balanceLine.isEmpty()) {
-                    try {
-                        SignupForm user = SignupForm.parse(accountNumberLine, passsworLne, pinNumberLine, cardNoLine,
-                                stateLine, cityLine, pinCodeLine, addLine, emailLine, maritalStatusLine, fnameLine,
-                                nameLine, genderLine,
-                                religionLine, categoryLine, incomeLine, educationLine, occupationLine, panLine,
-                                aadharLine, seniorLine,
-                                existingLine, accountTypeLine, servicesLine, dateLine, balanceLine);
-                        if (user.getAccountNumber().equals(accountNumber) && user.getPassword().equals(Password)) {
-                            return user;
-                        }
-
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String data;
+            while ((data = reader.readLine()) != null) {
+                UserFrom user = new UserFrom();
+                user = user.parseUserFrom(data);
+                if (user.getAccountNumber().trim().equals(accountNumber) && user.getPassword().equals(password)) {
+                    return user;
 
                 }
-
             }
+            reader.close();
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return null;
     }
 
-    public SignupForm findByCardNoAndPin(String cardNo, String pin) {
+    public UserFrom findUserByCardNoAndPin(String cardNo, String pin) {
         // Find user by card number and pin
         String path = GetPathName.getPathName();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path + "/db/db.txt"))) {
-            String accountNumberLine;
-            String passsworLne;
-            String pinNumberLine;
-            String cardNoLine;
-            String stateLine;
-            String cityLine;
-            String pinCodeLine;
-            String addLine;
-            String emailLine;
-            String maritalStatusLine;
-            String fnameLine;
-            String nameLine;
-            String genderLine;
-            String religionLine;
-            String categoryLine;
-            String incomeLine;
-            String educationLine;
-            String occupationLine;
-            String panLine;
-            String aadharLine;
-            String seniorLine;
-            String existingLine;
-            String accountTypeLine;
-            String servicesLine;
-            String dateLine;
-            String balanceLine;
-
-            while ((accountNumberLine = reader.readLine()) != null &&
-                    (passsworLne = reader.readLine()) != null &&
-                    (pinNumberLine = reader.readLine()) != null &&
-                    (cardNoLine = reader.readLine()) != null &&
-                    (stateLine = reader.readLine()) != null &&
-                    (cityLine = reader.readLine()) != null &&
-                    (pinCodeLine = reader.readLine()) != null &&
-                    (addLine = reader.readLine()) != null &&
-                    (emailLine = reader.readLine()) != null &&
-                    (maritalStatusLine = reader.readLine()) != null &&
-                    (fnameLine = reader.readLine()) != null &&
-                    (nameLine = reader.readLine()) != null &&
-                    (genderLine = reader.readLine()) != null &&
-                    (religionLine = reader.readLine()) != null &&
-                    (categoryLine = reader.readLine()) != null &&
-                    (incomeLine = reader.readLine()) != null &&
-                    (educationLine = reader.readLine()) != null &&
-                    (occupationLine = reader.readLine()) != null &&
-                    (panLine = reader.readLine()) != null &&
-                    (aadharLine = reader.readLine()) != null &&
-                    (seniorLine = reader.readLine()) != null &&
-                    (existingLine = reader.readLine()) != null &&
-                    (accountTypeLine = reader.readLine()) != null &&
-                    (servicesLine = reader.readLine()) != null &&
-                    (dateLine = reader.readLine()) != null &&
-                    (balanceLine = reader.readLine()) != null) {
-                if (!accountNumberLine.isEmpty() && !passsworLne.isEmpty() && !pinNumberLine.isEmpty()
-                        && !cardNoLine.isEmpty() && !stateLine.isEmpty() && !cityLine.isEmpty()
-                        && !pinCodeLine.isEmpty() && !addLine.isEmpty() && !emailLine.isEmpty()
-                        && !maritalStatusLine.isEmpty() && !fnameLine.isEmpty()
-                        && !nameLine.isEmpty() && !genderLine.isEmpty() && !religionLine.isEmpty()
-                        && !categoryLine.isEmpty() && !incomeLine.isEmpty() && !educationLine.isEmpty()
-                        && !occupationLine.isEmpty()
-                        && !panLine.isEmpty() && !aadharLine.isEmpty() && !seniorLine.isEmpty()
-                        && !existingLine.isEmpty() && !accountTypeLine.isEmpty() && !servicesLine.isEmpty()
-                        && !dateLine.isEmpty() && !balanceLine.isEmpty()) {
-                    try {
-                        SignupForm user = SignupForm.parse(accountNumberLine, passsworLne, pinNumberLine, cardNoLine,
-                                stateLine, cityLine, pinCodeLine, addLine, emailLine, maritalStatusLine, fnameLine,
-                                nameLine, genderLine,
-                                religionLine, categoryLine, incomeLine, educationLine, occupationLine, panLine,
-                                aadharLine, seniorLine,
-                                existingLine, accountTypeLine, servicesLine, dateLine, balanceLine);
-                        if (user.getCardNo().equals(cardNo) && user.getPinNumber().equals(pin)) {
-                            return user;
-                        }
-
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String data;
+            while ((data = reader.readLine()) != null) {
+                UserFrom user = new UserFrom();
+                user = user.parseUserFrom(data);
+                if (user.getCardNo().trim().equals(cardNo) && user.getPinNumber().trim().equals(pin)) {
+                    return user;
                 }
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return null;
     }
 
-    public boolean updateUser(SignupForm user, String accountNumber, String password) {
-        // Update balance
+    public boolean updateUser() {
+        // Update user
         String path = GetPathName.getPathName();
-        File tempFile = new File(path + "/db/dbTemp.txt");
-        File file = new File(path + "/db/db.txt");
-        SignupForm user1 = findUserByAccNoAndPass(accountNumber, password);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file));
-                PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
-
-            String accountNumberLine;
-            String passsworLne;
-            String pinNumberLine;
-            String cardNoLine;
-            String stateLine;
-            String cityLine;
-            String pinCodeLine;
-            String addLine;
-            String emailLine;
-            String maritalStatusLine;
-            String fnameLine;
-            String nameLine;
-            String genderLine;
-            String religionLine;
-            String categoryLine;
-            String incomeLine;
-            String educationLine;
-            String occupationLine;
-            String panLine;
-            String aadharLine;
-            String seniorLine;
-            String existingLine;
-            String accountTypeLine;
-            String servicesLine;
-            String dateLine;
-            String balanceLine;
-            while ((accountNumberLine = reader.readLine()) != null &&
-                    (passsworLne = reader.readLine()) != null &&
-                    (pinNumberLine = reader.readLine()) != null &&
-                    (cardNoLine = reader.readLine()) != null &&
-                    (stateLine = reader.readLine()) != null &&
-                    (cityLine = reader.readLine()) != null &&
-                    (pinCodeLine = reader.readLine()) != null &&
-                    (addLine = reader.readLine()) != null &&
-                    (emailLine = reader.readLine()) != null &&
-                    (maritalStatusLine = reader.readLine()) != null &&
-                    (fnameLine = reader.readLine()) != null &&
-                    (nameLine = reader.readLine()) != null &&
-                    (genderLine = reader.readLine()) != null &&
-                    (religionLine = reader.readLine()) != null &&
-                    (categoryLine = reader.readLine()) != null &&
-                    (incomeLine = reader.readLine()) != null &&
-                    (educationLine = reader.readLine()) != null &&
-                    (occupationLine = reader.readLine()) != null &&
-                    (panLine = reader.readLine()) != null &&
-                    (aadharLine = reader.readLine()) != null &&
-                    (seniorLine = reader.readLine()) != null &&
-                    (existingLine = reader.readLine()) != null &&
-                    (accountTypeLine = reader.readLine()) != null &&
-                    (servicesLine = reader.readLine()) != null &&
-                    (dateLine = reader.readLine()) != null &&
-                    (balanceLine = reader.readLine()) != null) {
-                if (!accountNumberLine.isEmpty() && !passsworLne.isEmpty() && !pinNumberLine.isEmpty()
-                        && !cardNoLine.isEmpty() && !stateLine.isEmpty() && !cityLine.isEmpty()
-                        && !pinCodeLine.isEmpty() && !addLine.isEmpty() && !emailLine.isEmpty()
-                        && !maritalStatusLine.isEmpty() && !fnameLine.isEmpty()
-                        && !nameLine.isEmpty() && !genderLine.isEmpty() && !religionLine.isEmpty()
-                        && !categoryLine.isEmpty() && !incomeLine.isEmpty() && !educationLine.isEmpty()
-                        && !occupationLine.isEmpty()
-                        && !panLine.isEmpty() && !aadharLine.isEmpty() && !seniorLine.isEmpty()
-                        && !existingLine.isEmpty() && !accountTypeLine.isEmpty() && !servicesLine.isEmpty()
-                        && !dateLine.isEmpty() && !balanceLine.isEmpty()) {
-                    try {
-                        SignupForm user2 = SignupForm.parse(accountNumberLine, passsworLne, pinNumberLine, cardNoLine,
-                                stateLine, cityLine, pinCodeLine, addLine, emailLine, maritalStatusLine, fnameLine,
-                                nameLine, genderLine,
-                                religionLine, categoryLine, incomeLine, educationLine, occupationLine, panLine,
-                                aadharLine, seniorLine,
-                                existingLine, accountTypeLine, servicesLine, dateLine, balanceLine);
-                        if (user2.equals(user1)) {
-                            writer.println(user);
-                        } else {
-                            writer.println(user2);
-                        }
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            File tempFile = new File(path + "/db/myTempFile.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            String data;
+            while ((data = reader.readLine()) != null) {
+                UserFrom user = new UserFrom();
+                user = user.parseUserFrom(data);
+                if (user.getAccountNumber().equals(userFrom.getAccountNumber())) {
+                    writer.write(userFrom.toString());
+                } else {
+                    writer.write(data);
                 }
+                writer.newLine();
             }
+            writer.close();
+            reader.close();
+            Files.move(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            tempFile.delete();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-            Files.copy(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    public boolean deleteUser(String id) {
+        // Delete user
+        String path = GetPathName.getPathName();
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            File tempFile = new File(path + "/db/myTempFile.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+            String data;
+            while ((data = reader.readLine()) != null) {
+                UserFrom user = new UserFrom();
+                user = user.parseUserFrom(data);
+                if (user.getAccountNumber().equals(id)) {
+                    continue;
+                }
+                writer.write(data);
+                writer.newLine();
+            }
+            writer.close();
+            reader.close();
+            Files.move(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
             tempFile.delete();
             return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
-
     }
 
-    public boolean deleteUser(SignupForm user, String accountNumber, String password) {
+    public UserFrom[] findAll() {
+        // Find all users
         String path = GetPathName.getPathName();
-        File tempFile = new File(path + "/db/dbTemp.txt");
-        File file = new File(path + "/db/db.txt");
-        SignupForm user1 = findUserByAccNoAndPass(accountNumber, password);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file));
-                PrintWriter writer = new PrintWriter(new FileWriter(tempFile))) {
-            String accountNumberLine;
-            String passsworLne;
-            String pinNumberLine;
-            String cardNoLine;
-            String stateLine;
-            String cityLine;
-            String pinCodeLine;
-            String addLine;
-            String emailLine;
-            String maritalStatusLine;
-            String fnameLine;
-            String nameLine;
-            String genderLine;
-            String religionLine;
-            String categoryLine;
-            String incomeLine;
-            String educationLine;
-            String occupationLine;
-            String panLine;
-            String aadharLine;
-            String seniorLine;
-            String existingLine;
-            String accountTypeLine;
-            String servicesLine;
-            String dateLine;
-            String balanceLine;
-            while ((accountNumberLine = reader.readLine()) != null &&
-                    (passsworLne = reader.readLine()) != null &&
-                    (pinNumberLine = reader.readLine()) != null &&
-                    (cardNoLine = reader.readLine()) != null &&
-                    (stateLine = reader.readLine()) != null &&
-                    (cityLine = reader.readLine()) != null &&
-                    (pinCodeLine = reader.readLine()) != null &&
-                    (addLine = reader.readLine()) != null &&
-                    (emailLine = reader.readLine()) != null &&
-                    (maritalStatusLine = reader.readLine()) != null &&
-                    (fnameLine = reader.readLine()) != null &&
-                    (nameLine = reader.readLine()) != null &&
-                    (genderLine = reader.readLine()) != null &&
-                    (religionLine = reader.readLine()) != null &&
-                    (categoryLine = reader.readLine()) != null &&
-                    (incomeLine = reader.readLine()) != null &&
-                    (educationLine = reader.readLine()) != null &&
-                    (occupationLine = reader.readLine()) != null &&
-                    (panLine = reader.readLine()) != null &&
-                    (aadharLine = reader.readLine()) != null &&
-                    (seniorLine = reader.readLine()) != null &&
-                    (existingLine = reader.readLine()) != null &&
-                    (accountTypeLine = reader.readLine()) != null &&
-                    (servicesLine = reader.readLine()) != null &&
-                    (dateLine = reader.readLine()) != null &&
-                    (balanceLine = reader.readLine()) != null) {
-                if (!accountNumberLine.isEmpty() && !passsworLne.isEmpty() && !pinNumberLine.isEmpty()
-                        && !cardNoLine.isEmpty() && !stateLine.isEmpty() && !cityLine.isEmpty()
-                        && !pinCodeLine.isEmpty() && !addLine.isEmpty() && !emailLine.isEmpty()
-                        && !maritalStatusLine.isEmpty() && !fnameLine.isEmpty()
-                        && !nameLine.isEmpty() && !genderLine.isEmpty() && !religionLine.isEmpty()
-                        && !categoryLine.isEmpty() && !incomeLine.isEmpty() && !educationLine.isEmpty()
-                        && !occupationLine.isEmpty()
-                        && !panLine.isEmpty() && !aadharLine.isEmpty() && !seniorLine.isEmpty()
-                        && !existingLine.isEmpty() && !accountTypeLine.isEmpty() && !servicesLine.isEmpty()
-                        && !dateLine.isEmpty() && !balanceLine.isEmpty()) {
-                    try {
-                        SignupForm user2 = SignupForm.parse(accountNumberLine, passsworLne, pinNumberLine, cardNoLine,
-                                stateLine, cityLine, pinCodeLine, addLine, emailLine, maritalStatusLine, fnameLine,
-                                nameLine, genderLine,
-                                religionLine, categoryLine, incomeLine, educationLine, occupationLine, panLine,
-                                aadharLine, seniorLine,
-                                existingLine, accountTypeLine, servicesLine, dateLine, balanceLine);
-                        if (!user2.equals(user1)) {
-                            writer.println(user);
-                        }
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-                    }
-                }
+        try {
+            File file = new File(path + "/db/users-logs.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String data;
+            UserFrom[] users = new UserFrom[100];
+            int i = 0;
+            while ((data = reader.readLine()) != null) {
+                UserFrom user = new UserFrom();
+                user = user.parseUserFrom(data);
+                users[i] = user;
+                i++;
             }
-
-            Files.copy(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            tempFile.delete();
-            return true;
+            reader.close();
+            return users;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
 
     }
+
 }

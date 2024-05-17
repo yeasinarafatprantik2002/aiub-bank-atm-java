@@ -1,9 +1,10 @@
-package frontend.signup1;
+package frontend.update1;
 
 import javax.swing.*;
 
+import backend.signup.UserFrom;
 import frontend.dashboardLogin.DashboardLogin;
-import frontend.signup2.Signup2;
+import frontend.update2.Update2;
 import helpers.GetPathName;
 
 import java.awt.*;
@@ -11,17 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Signup1 extends JFrame {
+public class Update1 extends JFrame {
     JRadioButton r1, r2, m1, m2, m3;
     JButton next, cancel;
     JComboBox date, month, year;
 
     JTextField textName, textFname, textEmail, textAdd, textcity, textState, textPin;
     Random ran = new Random();
-    long accountNumber4 = (ran.nextLong() % 9000L) + 1000L;
-    String accountNumber = " " + Math.abs(accountNumber4);
+
+    String accountNumber;
     String data;
-    Signup1 signup1 = this;
+    Update1 update1 = this;
+    UserFrom user;
 
     private String dates[] = { "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
@@ -41,9 +43,11 @@ public class Signup1 extends JFrame {
             "2015", "2016", "2017", "2018",
             "2019", "2020" };
 
-    public Signup1() {
-        super("APPLICATION FORM");
+    public Update1(UserFrom user) {
+        super("UPDATE FORM");
+        this.user = user;
         String path = GetPathName.getPathName();
+        accountNumber = user.getAccountNumber();
 
         ImageIcon i1 = new ImageIcon(
                 path + "/public/images/bank.png");
@@ -53,7 +57,7 @@ public class Signup1 extends JFrame {
         image.setBounds(25, 10, 100, 100);
         add(image);
 
-        JLabel label1 = new JLabel("APPLICATION FORM NO." + accountNumber);
+        JLabel label1 = new JLabel("UPDATE FORM NO. " + accountNumber);
         label1.setBounds(160, 20, 600, 40);
         label1.setFont(new Font("Raleway", Font.BOLD, 38));
         add(label1);
@@ -73,7 +77,7 @@ public class Signup1 extends JFrame {
         labelName.setBounds(100, 190, 100, 30);
         add(labelName);
 
-        textName = new JTextField();
+        textName = new JTextField(user.getName());
         textName.setFont(new Font("Raleway", Font.BOLD, 14));
         textName.setBounds(300, 190, 400, 30);
         add(textName);
@@ -83,7 +87,7 @@ public class Signup1 extends JFrame {
         labelfName.setBounds(100, 240, 200, 30);
         add(labelfName);
 
-        textFname = new JTextField();
+        textFname = new JTextField(user.getFname());
         textFname.setFont(new Font("Raleway", Font.BOLD, 14));
         textFname.setBounds(300, 240, 400, 30);
         add(textFname);
@@ -137,7 +141,7 @@ public class Signup1 extends JFrame {
         labelEmail.setBounds(100, 390, 200, 30);
         add(labelEmail);
 
-        textEmail = new JTextField();
+        textEmail = new JTextField(user.getEmail());
         textEmail.setFont(new Font("Raleway", Font.BOLD, 14));
         textEmail.setBounds(300, 390, 400, 30);
         add(textEmail);
@@ -175,7 +179,7 @@ public class Signup1 extends JFrame {
         labelAdd.setBounds(100, 490, 200, 30);
         add(labelAdd);
 
-        textAdd = new JTextField();
+        textAdd = new JTextField(user.getAdd());
         textAdd.setFont(new Font("Raleway", Font.BOLD, 14));
         textAdd.setBounds(300, 490, 400, 30);
         add(textAdd);
@@ -185,7 +189,7 @@ public class Signup1 extends JFrame {
         labelCity.setBounds(100, 540, 200, 30);
         add(labelCity);
 
-        textcity = new JTextField();
+        textcity = new JTextField(user.getCity());
         textcity.setFont(new Font("Raleway", Font.BOLD, 14));
         textcity.setBounds(300, 540, 400, 30);
         add(textcity);
@@ -195,7 +199,7 @@ public class Signup1 extends JFrame {
         labelPin.setBounds(100, 590, 200, 30);
         add(labelPin);
 
-        textPin = new JTextField();
+        textPin = new JTextField(user.getPinCode());
         textPin.setFont(new Font("Raleway", Font.BOLD, 14));
         textPin.setBounds(300, 590, 400, 30);
         add(textPin);
@@ -205,7 +209,7 @@ public class Signup1 extends JFrame {
         labelstate.setBounds(100, 640, 200, 30);
         add(labelstate);
 
-        textState = new JTextField();
+        textState = new JTextField(user.getState());
         textState.setFont(new Font("Raleway", Font.BOLD, 14));
         textState.setBounds(300, 640, 400, 30);
         add(textState);
@@ -249,8 +253,8 @@ public class Signup1 extends JFrame {
                 String year1 = (String) year.getSelectedItem();
                 String dob = date1 + "/" + month1 + "/" + year1;
 
-                new Signup2(accountNumber, name, fname, email, add, city, state, pinCode, gender, ms, dob, signup1);
-
+                new Update2(accountNumber, name, fname, email, add, city, state, pinCode, gender, ms, dob, update1,
+                        user);
                 setVisible(false);
 
             }
@@ -265,7 +269,7 @@ public class Signup1 extends JFrame {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DashboardLogin("", "").setVisible(true);
+                new DashboardLogin(accountNumber, user.getPassword()).setVisible(true);
                 setVisible(false);
             }
         });
@@ -276,7 +280,6 @@ public class Signup1 extends JFrame {
         setLayout(null);
         setSize(850, 800);
         setLocation(360, 40);
-        setUndecorated(true);
         setVisible(true);
 
     }

@@ -1,7 +1,8 @@
-package frontend.signup3;
+package frontend.update3;
 
 import javax.swing.*;
 import frontend.signup2.Signup2;
+import frontend.update2.Update2;
 import helpers.GetPathName;
 import db.dbConfig.DbConfig;
 import backend.signup.UserFrom;
@@ -11,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Signup3 extends JFrame {
+public class Update3 extends JFrame {
 
     JRadioButton r1, r2, r3, r4;
     JCheckBox c1, c2, c3, c4, c5, c6;
@@ -38,14 +39,16 @@ public class Signup3 extends JFrame {
     String nnid;
     String senior;
     String existing;
+    Update2 update2;
+    UserFrom user;
 
-    public Signup3(String accountNumer, String name, String fname, String email, String add,
+    public Update3(String accountNumer, String name, String fname, String email, String add,
             String city, String state,
             String pinCode, String gender, String ms, String dob, String religion, String category, String income,
             String education, String occupation, String pan, String aadhar, String senior, String existing,
-            Signup2 signup2) {
+            Update2 update2, UserFrom user) {
 
-        super("APPLICATION FORM");
+        super("UPDATE FORM");
         this.accountNumer = accountNumer;
         this.name = name;
         this.fname = fname;
@@ -66,6 +69,8 @@ public class Signup3 extends JFrame {
         this.nnid = aadhar;
         this.senior = senior;
         this.existing = existing;
+        this.update2 = update2;
+        this.user = user;
 
         String path = GetPathName.getPathName();
 
@@ -126,27 +131,28 @@ public class Signup3 extends JFrame {
         l14.setBounds(100, 260, 200, 30);
         add(l14);
 
+        JPasswordField pf = new JPasswordField(user.getPassword());
+        pf.setFont(new Font("Raleway", Font.BOLD, 14));
+        pf.setBounds(330, 260, 200, 30);
+        add(pf);
+
         JLabel l4 = new JLabel("Card Number:");
         l4.setFont(new Font("Raleway", Font.BOLD, 18));
         l4.setBounds(100, 300, 200, 30);
         add(l4);
-
-        JPasswordField pf = new JPasswordField();
-        pf.setFont(new Font("Raleway", Font.BOLD, 14));
-        pf.setBounds(330, 260, 200, 30);
-        add(pf);
 
         JLabel l5 = new JLabel("(Your 16-digit Card Number)");
         l5.setFont(new Font("Raleway", Font.BOLD, 12));
         l5.setBounds(100, 330, 200, 20);
         add(l5);
 
-        JLabel l6 = new JLabel("XXXX-XXXX-XXXX-4841");
-        l6.setFont(new Font("Raleway", Font.BOLD, 18));
-        l6.setBounds(330, 300, 250, 30);
-        add(l6);
+        JTextField t1 = new JTextField(user.getCardNo());
+        t1.setFont(new Font("Raleway", Font.BOLD, 18));
+        t1.setBounds(330, 300, 250, 30);
+        t1.setEditable(false);
+        add(t1);
 
-        JLabel l7 = new JLabel("(It would appear on atm card/cheque Book and Statements)");
+        JLabel l7 = new JLabel("(card number is non changeable!)");
         l7.setFont(new Font("Raleway", Font.BOLD, 12));
         l7.setBounds(330, 330, 500, 20);
         add(l7);
@@ -156,12 +162,12 @@ public class Signup3 extends JFrame {
         l8.setBounds(100, 370, 200, 30);
         add(l8);
 
-        JLabel l9 = new JLabel("XXXX");
-        l9.setFont(new Font("Raleway", Font.BOLD, 18));
-        l9.setBounds(330, 370, 200, 30);
-        add(l9);
+        JTextField t2 = new JTextField(user.getPinNumber());
+        t2.setFont(new Font("Raleway", Font.BOLD, 18));
+        t2.setBounds(330, 370, 200, 30);
+        add(t2);
 
-        JLabel l10 = new JLabel("(4-digit Password)");
+        JLabel l10 = new JLabel("(You Can Change Your PIN Any Time!)");
         l10.setFont(new Font("Raleway", Font.BOLD, 12));
         l10.setBounds(100, 400, 200, 20);
         add(l10);
@@ -224,7 +230,7 @@ public class Signup3 extends JFrame {
         l13.setBounds(760, 10, 60, 30);
         add(l13);
 
-        s = new JButton("Submit");
+        s = new JButton("UPDATE");
         s.setFont(new Font("Raleway", Font.BOLD, 14));
         s.setBackground(Color.BLACK);
         s.setForeground(Color.WHITE);
@@ -245,12 +251,9 @@ public class Signup3 extends JFrame {
                     accountType = "Not Selected";
                 }
 
-                Random random = new Random();
-                long first7 = (random.nextLong() % 90000000L) + 5040936000000000L;
-                String cardNo = "" + Math.abs(first7);
+                String cardNo = t1.getText();
 
-                long first3 = (random.nextLong() % 9000L) + 1000L;
-                String pinNumber = "" + Math.abs(first3);
+                String pinNumber = t2.getText();
 
                 String services = "";
                 if (c1.isSelected()) {
@@ -278,7 +281,11 @@ public class Signup3 extends JFrame {
                             state, pinCode, religion, category, income, education, occupation, nid, nnid, senior,
                             existing,
                             accountType, cardNo, pinNumber, services, dob, "0");
-                    new DbConfig(user).save();
+                    new DbConfig(user).updateUser();
+
+                    if (new DbConfig(user).updateUser()) {
+
+                    }
 
                     new DashboardLogin(accountNumer.trim(), password.trim());
                     setVisible(false);
@@ -295,7 +302,7 @@ public class Signup3 extends JFrame {
         back.setBounds(100, 720, 100, 30);
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                signup2.setVisible(true);
+                update2.setVisible(true);
                 setVisible(false);
             }
         });
@@ -308,7 +315,7 @@ public class Signup3 extends JFrame {
         c.setBounds(420, 720, 100, 30);
         c.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new DashboardLogin("", "").setVisible(true);
+                new DashboardLogin(user.getAccountNumber(), user.getPassword()).setVisible(true);
                 setVisible(false);
             }
         });
@@ -319,7 +326,6 @@ public class Signup3 extends JFrame {
         setSize(850, 800);
         setLayout(null);
         setLocation(400, 20);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 

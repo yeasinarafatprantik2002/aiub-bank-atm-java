@@ -1,6 +1,6 @@
 package backend.signup;
 
-public class SignupForm {
+public class UserFrom {
     private String name;
     private String fname;;
     private String email;
@@ -8,7 +8,7 @@ public class SignupForm {
     private String add;
     private String city;
     private String state;
-    private String pin;
+    private String pinCode;
     private String gender;
     private String religion;
     private String category;
@@ -28,13 +28,14 @@ public class SignupForm {
     private String password;
     private String occupation;
 
-    private String data;
+    public UserFrom() {
+    }
 
-    public SignupForm(String accountNumber, String password, String name, String fname, String gender, String email,
+    public UserFrom(String accountNumber, String password, String name, String fname, String gender, String email,
             String maritalStatus,
             String add,
             String city, String state,
-            String pin,
+            String pinCode,
             String religion, String category, String income, String education, String occupation, String pan,
             String aadhar, String senior,
             String existing, String accountType, String cardNo, String pinNumber, String services, String date,
@@ -47,7 +48,7 @@ public class SignupForm {
         this.add = add;
         this.city = city;
         this.state = state;
-        this.pin = pin;
+        this.pinCode = pinCode;
         this.religion = religion;
         this.category = category;
         this.income = income;
@@ -64,7 +65,6 @@ public class SignupForm {
         this.balance = balance;
         this.accountNumber = accountNumber;
         this.password = password;
-
         this.date = date;
 
     }
@@ -109,8 +109,8 @@ public class SignupForm {
         return state;
     }
 
-    public String getPin() {
-        return pin;
+    public String getPinCode() {
+        return pinCode;
     }
 
     public String getGender() {
@@ -119,10 +119,6 @@ public class SignupForm {
 
     public String getReligion() {
         return religion;
-    }
-
-    public String getPinCode() {
-        return pin;
     }
 
     public String getCategory() {
@@ -181,8 +177,8 @@ public class SignupForm {
         this.accountNumber = accountNumber;
     }
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public void setPinCode(String pinCode) {
+        this.pinCode = pinCode;
     }
 
     public void setCardNo(String cardNo) {
@@ -283,123 +279,76 @@ public class SignupForm {
 
     @Override
     public String toString() {
-        data = "Account Number = " + accountNumber + "\n" + "Password = " + password + "\n" + "Pin Number = "
-                + pinNumber
-                + "\n"
-                + "Card Number = " + cardNo + "\n"
-                + "State = " + state + "\n" + "City = "
-                + city + "\n" + "Pin Code = " + pin
-                + "\n" + "Address = " + add
-                + "\n" + "Email = " + email + "\n" + "Marital Status = " + maritalStatus + "\n" + "Father's Name = "
-                + fname + "\n" + "Name = " + name + "\n"
-                + "Gender = " + gender + "\n"
-                + "Religion = " + religion + "\n" + "Category = " + category + "\n" + "Income = " + income + "\n"
-                + "Education = " + education + "\n" + "Occupation = " + occupation + "\n" + "PAN = " + pan + "\n"
-                + "Aadhar = " + aadhar + "\n"
-                + "Senior Citizen = " + senior + "\n" + "Existing Account = " + existing + "\n" + "Account Type = "
-                + accountType + "\n" + "Services = " + services + "\n" + "Date = " + date + "\n" + "Balance = "
-                + balance + "\n";
+        String data = accountNumber + "#" + password + "#" + name + "#" + fname + "#" + gender + "#" + email + "#"
+                + maritalStatus
+                + "#" + add + "#" + city + "#" + state + "#" + pinCode + "#" + religion + "#" + category + "#" + income
+                + "#" + education + "#" + occupation + "#" + pan + "#"
+                + aadhar + "#"
+                + senior + "#"
+                + existing + "#" + accountType + "#" + cardNo + "#" + pinNumber + "#" + services + "#" + date + "#"
+                + balance;
+
         return data;
     }
 
-    public void delete() {
-        data = "";
+    public UserFrom parseUserFrom(String data) {
+        String[] values = data.trim().split("#");
+        String accountNumber = values[0];
+        String password = values[1];
+        String name = values[2];
+        String fname = values[3];
+        String gender = values[4];
+        String email = values[5];
+        String maritalStatus = values[6];
+        String add = values[7];
+        String city = values[8];
+        String state = values[9];
+        String pinCode = values[10];
+        String religion = values[11];
+        String category = values[12];
+        String income = values[13];
+        String education = values[14];
+        String occupation = values[15];
+        String pan = values[16];
+        String aadhar = values[17];
+        String senior = values[18];
+        String existing = values[19];
+        String accountType = values[20];
+        String cardNo = values[21];
+        String pinNumber = values[22];
+        String services = values[23];
+        String date = values[24];
+        String balance = values[25];
 
-    }
+        UserFrom user = new UserFrom();
+        user.setAccountNumber(accountNumber);
+        user.setPassword(password);
+        user.setName(name);
+        user.setFname(fname);
+        user.setGender(gender);
+        user.setEmail(email);
+        user.setMaritalStatus(maritalStatus);
+        user.setAdd(add);
+        user.setCity(city);
+        user.setState(state);
+        user.setPinCode(pinCode);
+        user.setReligion(religion);
+        user.setCategory(category);
+        user.setIncome(income);
+        user.setEducation(education);
+        user.setOccupation(occupation);
+        user.setPan(pan);
+        user.setAadhar(aadhar);
+        user.setSenior(senior);
+        user.setExisting(existing);
+        user.setAccountType(accountType);
+        user.setCardNo(cardNo);
+        user.setPinNumber(pinNumber);
+        user.setServices(services);
+        user.setDate(date);
+        user.setBalance(balance);
 
-    public static SignupForm parse(String accountNumberLine, String passsworLne, String pinNumberLine,
-            String cardNoLine,
-            String stateLine,
-            String cityLine, String pinCodeLine, String addLine,
-            String emailLine, String maritalStatusLine, String fnameLine, String nameLine, String genderLine,
-            String religionLine,
-            String categoryLine,
-            String incomeLine, String educationLine, String occupationLine, String panLine, String aadharLine,
-            String seniorLine,
-            String existingLine, String accountTypeLine, String servicesLine, String dateLine, String balanceLine) {
-
-        String[] accountNumberParts = accountNumberLine.split("=");
-        String accountNumber = accountNumberParts[1].trim();
-
-        String[] passwordParts = passsworLne.split("=");
-        String password = passwordParts[1].trim();
-
-        String[] pinNumberParts = pinNumberLine.split("=");
-        int pinNumber = Integer.parseInt(pinNumberParts[1].trim());
-
-        String[] cardNoParts = cardNoLine.split("=");
-        String cardNo = cardNoParts[1].trim();
-
-        String[] stateParts = stateLine.split("=");
-        String state = stateParts[1].trim();
-
-        String[] cityParts = cityLine.split("=");
-        String city = cityParts[1].trim();
-
-        String[] pinCodeParts = pinCodeLine.split("=");
-        String pinCode = pinCodeParts[1].trim();
-
-        String[] addParts = addLine.split("=");
-        String add = addParts[1].trim();
-
-        String[] emailParts = emailLine.split("=");
-        String email = emailParts[1].trim();
-
-        String[] maritalStatusParts = maritalStatusLine.split("=");
-        String maritalStatus = maritalStatusParts[1].trim();
-
-        String[] fnameParts = fnameLine.split("=");
-        String fname = fnameParts[1].trim();
-
-        String[] nameParts = nameLine.split("=");
-        String name = nameParts[1].trim();
-
-        String[] genderParts = genderLine.split("=");
-        String gender = genderParts[1].trim();
-
-        String[] religionParts = religionLine.split("=");
-        String religion = religionParts[1].trim();
-
-        String[] categoryParts = categoryLine.split("=");
-        String category = categoryParts[1].trim();
-
-        String[] incomeParts = incomeLine.split("=");
-        String income = incomeParts[1].trim();
-
-        String[] educationParts = educationLine.split("=");
-        String education = educationParts[1].trim();
-
-        String[] occupationParts = occupationLine.split("=");
-        String occupation = occupationParts[1].trim();
-
-        String[] panParts = panLine.split("=");
-        String pan = panParts[1].trim();
-
-        String[] aadharParts = aadharLine.split("=");
-        String aadhar = aadharParts[1].trim();
-
-        String[] seniorParts = seniorLine.split("=");
-        String senior = seniorParts[1].trim();
-
-        String[] existingParts = existingLine.split("=");
-        String existing = existingParts[1].trim();
-
-        String[] accountTypeParts = accountTypeLine.split("=");
-        String accountType = accountTypeParts[1].trim();
-
-        String[] servicesParts = servicesLine.split("=");
-        String services = servicesParts[1].trim();
-
-        String[] dateParts = dateLine.split("=");
-        String date = dateParts[1].trim();
-
-        String[] balanceParts = balanceLine.split("=");
-        int balance = Integer.parseInt(balanceParts[1].trim());
-
-        return new SignupForm(accountNumber, password, name, fname, gender, email, maritalStatus, add, city, state,
-                pinCode,
-                religion, category, income, education, occupation, pan, aadhar, senior, existing, accountType, cardNo,
-                pinNumber + "", services, date, balance + "");
+        return user;
     }
 
 }

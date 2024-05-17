@@ -1,8 +1,11 @@
-package frontend.signup2;
+package frontend.update2;
 
 import javax.swing.*;
 
+import backend.signup.UserFrom;
 import frontend.signup3.Signup3;
+import frontend.update1.Update1;
+import frontend.update3.Update3;
 import frontend.dashboardLogin.DashboardLogin;
 import frontend.signup1.Signup1;
 import helpers.GetPathName;
@@ -11,7 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Signup2 extends JFrame {
+public class Update2 extends JFrame {
     JComboBox comboBox, comboBox2, comboBox3, comboBox4, comboBox5;
     JTextField textPan, textAadhar;
     JRadioButton r1, r2, e1, e2;
@@ -27,11 +30,12 @@ public class Signup2 extends JFrame {
     String gender;
     String ms;
     String dob;
-    Signup1 signup1;
-    Signup2 signup2 = this;
+    Update1 update1;
+    Update2 update2 = this;
+    UserFrom user;
 
-    public Signup2(String accountNumber, String name, String fname, String email, String add, String city, String state,
-            String pinCode, String gender, String ms, String dob, Signup1 signup1) {
+    public Update2(String accountNumber, String name, String fname, String email, String add, String city, String state,
+            String pinCode, String gender, String ms, String dob, Update1 update1, UserFrom user) {
         super("APPLICATION FORM");
         String path = GetPathName.getPathName();
 
@@ -53,9 +57,10 @@ public class Signup2 extends JFrame {
         this.gender = gender;
         this.ms = ms;
         this.dob = dob;
-        this.signup1 = signup1;
+        this.update1 = update1;
+        this.user = user;
 
-        JLabel l1 = new JLabel("Page 2 :-");
+        JLabel l1 = new JLabel("Page 2 : ");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
         l1.setBounds(300, 30, 600, 40);
         add(l1);
@@ -130,7 +135,7 @@ public class Signup2 extends JFrame {
         l8.setBounds(100, 390, 150, 30);
         add(l8);
 
-        textPan = new JTextField();
+        textPan = new JTextField(user.getPan());
         textPan.setFont(new Font("Raleway", Font.BOLD, 18));
         textPan.setBounds(350, 390, 320, 30);
         add(textPan);
@@ -140,7 +145,7 @@ public class Signup2 extends JFrame {
         l9.setBounds(100, 440, 180, 30);
         add(l9);
 
-        textAadhar = new JTextField();
+        textAadhar = new JTextField(user.getAadhar());
         textAadhar.setFont(new Font("Raleway", Font.BOLD, 18));
         textAadhar.setBounds(350, 440, 320, 30);
         add(textAadhar);
@@ -182,7 +187,7 @@ public class Signup2 extends JFrame {
         l12.setBounds(700, 10, 100, 30);
         add(l12);
 
-        JLabel l13 = new JLabel(accountNumber);
+        JLabel l13 = new JLabel(user.getAccountNumber());
         l13.setFont(new Font("Raleway", Font.BOLD, 14));
         l13.setBounds(760, 10, 60, 30);
         add(l13);
@@ -214,9 +219,15 @@ public class Signup2 extends JFrame {
                     existing = "No";
                 }
 
-                new Signup3(accountNumber, name, fname, email, add, city, state, pinCode, gender, ms, dob, religion,
+                // new Signup3(accountNumber, name, fname, email, add, city, state, pinCode,
+                // gender, ms, dob, religion,
+                // category, income, education, occupation, pan, aadhar, senior, existing,
+                // signup2);
+
+                new Update3(accountNumber, name, fname, email, add, city, state, pinCode,
+                        gender, ms, dob, religion,
                         category, income, education, occupation, pan, aadhar, senior, existing,
-                        signup2);
+                        update2, user);
                 setVisible(false);
             }
         });
@@ -229,7 +240,7 @@ public class Signup2 extends JFrame {
         back.setBounds(450, 640, 100, 30);
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                signup1.setVisible(true);
+                update1.setVisible(true);
                 setVisible(false);
             }
         });
@@ -242,7 +253,7 @@ public class Signup2 extends JFrame {
         cancel.setBounds(330, 640, 100, 30);
         cancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                new DashboardLogin("", "").setVisible(true);
+                new DashboardLogin(accountNumber, user.getPassword()).setVisible(true);
                 setVisible(false);
             }
         });

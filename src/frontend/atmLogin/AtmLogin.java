@@ -1,7 +1,9 @@
-package frontend.login;
+package frontend.atmLogin;
 
 import javax.swing.*;
 
+import backend.signup.UserFrom;
+import db.dbConfig.DbConfig;
 import frontend.atm.Atm;
 import frontend.dashboardLogin.DashboardLogin;
 import helpers.GetPathName;
@@ -10,7 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame {
+public class AtmLogin extends JFrame {
 
         JLabel label1, label2, label3;
         JTextField textField2;
@@ -19,7 +21,7 @@ public class Login extends JFrame {
         JButton button1, button2, button3, button4;
         String pin, cardno;
 
-        public Login(String cardno, String pin) {
+        public AtmLogin(String cardno, String pin) {
                 super("Bank Management System");
                 this.cardno = cardno;
                 this.pin = pin;
@@ -78,9 +80,14 @@ public class Login extends JFrame {
                 button1.setBounds(300, 300, 100, 30);
                 button1.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                                // String cardNo = textField2.getText();
-                                String pin = passwordField3.getName();
-                                new Atm(pin).setVisible(true);
+
+                                UserFrom user;
+                                user = new DbConfig().findUserByCardNoAndPin(cardno.trim(), pin.trim());
+                                if (user != null) {
+                                        new Atm(user).setVisible(true);
+                                } else {
+                                        JOptionPane.showMessageDialog(null, "Invalid Card No or Pin");
+                                }
                                 setVisible(false);
 
                         }
