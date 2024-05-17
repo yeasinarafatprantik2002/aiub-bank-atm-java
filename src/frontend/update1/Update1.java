@@ -2,7 +2,7 @@ package frontend.update1;
 
 import javax.swing.*;
 
-import backend.signup.UserFrom;
+import backend.user.UserFrom;
 import frontend.dashboardLogin.DashboardLogin;
 import frontend.update2.Update2;
 import helpers.GetPathName;

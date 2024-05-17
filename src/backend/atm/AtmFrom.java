@@ -1,6 +1,6 @@
-package backend.atmFrom;
+package backend.atm;
 
-import backend.signup.UserFrom;
+import backend.user.UserFrom;
 import db.dbConfig.DbConfig;
 import helpers.interfaces.iAtmOperations.IAtmOperations;
 

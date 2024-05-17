@@ -2,8 +2,8 @@ package frontend.pin;
 
 import javax.swing.*;
 
-import backend.atmFrom.AtmFrom;
-import backend.signup.UserFrom;
+import backend.atm.AtmFrom;
+import backend.user.UserFrom;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

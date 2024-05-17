@@ -2,10 +2,10 @@ package frontend.dashboardLogin;
 
 import javax.swing.*;
 
+import backend.user.UserFrom;
 import frontend.dashboard1.Dashboard1;
 import frontend.signup1.Signup1;
 import helpers.GetPathName;
-import backend.signup.UserFrom;
 import db.dbConfig.DbConfig;
 
 import java.awt.*;

@@ -2,8 +2,8 @@ package frontend.withdrawl;
 
 import javax.swing.*;
 
-import backend.atmFrom.AtmFrom;
-import backend.signup.UserFrom;
+import backend.atm.AtmFrom;
+import backend.user.UserFrom;
 import frontend.atm.Atm;
 import helpers.GetPathName;
 

@@ -2,7 +2,7 @@ package frontend.atm;
 
 import javax.swing.*;
 
-import backend.signup.UserFrom;
+import backend.user.UserFrom;
 import frontend.atmLogin.AtmLogin;
 import frontend.balanceEnquriy.BalanceEnquriy;
 import frontend.dashboardLogin.DashboardLogin;

@@ -1,12 +1,13 @@
 package db.dbConfig;
 
-import backend.signup.UserFrom;
 import helpers.GetPathName;
 import helpers.interfaces.iUserOperations.IUserOperations;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+
+import backend.user.UserFrom;
 
 public class DbConfig implements IUserOperations {
     private UserFrom userFrom;

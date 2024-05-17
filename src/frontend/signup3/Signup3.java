@@ -1,10 +1,11 @@
 package frontend.signup3;
 
 import javax.swing.*;
+
+import backend.user.UserFrom;
 import frontend.signup2.Signup2;
 import helpers.GetPathName;
 import db.dbConfig.DbConfig;
-import backend.signup.UserFrom;
 import frontend.dashboardLogin.DashboardLogin;
 import java.awt.*;
 import java.awt.event.ActionEvent;

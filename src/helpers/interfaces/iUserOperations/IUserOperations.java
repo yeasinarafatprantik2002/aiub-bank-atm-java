@@ -1,6 +1,6 @@
 package helpers.interfaces.iUserOperations;
 
-import backend.signup.UserFrom;
+import backend.user.UserFrom;
 
 public interface IUserOperations {
 

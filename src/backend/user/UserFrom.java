@@ -1,4 +1,4 @@
-package backend.signup;
+package backend.user;
 
 public class UserFrom {
     private String name;

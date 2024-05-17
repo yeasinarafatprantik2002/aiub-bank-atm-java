@@ -2,12 +2,12 @@ package frontend.dashboard3;
 
 import javax.swing.*;
 
+import backend.user.UserFrom;
 import frontend.atmLogin.AtmLogin;
 import frontend.dashboard2.Dashboard2;
 import frontend.dashboardLogin.DashboardLogin;
 import frontend.update1.Update1;
 import helpers.GetPathName;
-import backend.signup.UserFrom;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

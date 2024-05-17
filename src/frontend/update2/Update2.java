@@ -2,7 +2,7 @@ package frontend.update2;
 
 import javax.swing.*;
 
-import backend.signup.UserFrom;
+import backend.user.UserFrom;
 import frontend.signup3.Signup3;
 import frontend.update1.Update1;
 import frontend.update3.Update3;
