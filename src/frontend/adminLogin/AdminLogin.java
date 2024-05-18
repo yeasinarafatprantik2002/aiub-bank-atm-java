@@ -35,7 +35,7 @@ public class AdminLogin extends JFrame {
                 Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
                 ImageIcon i3 = new ImageIcon(i2);
                 JLabel image = new JLabel(i3);
-                image.setBounds(350, 10, 100, 100);
+                image.setBounds(400, 10, 100, 100);
                 add(image);
 
                 ImageIcon ii1 = new ImageIcon(path + "/public/images/card.png");
@@ -45,10 +45,10 @@ public class AdminLogin extends JFrame {
                 iimage.setBounds(630, 350, 100, 100);
                 add(iimage);
 
-                label1 = new JLabel("SONAR BANK ADMIN");
+                label1 = new JLabel("SONAR BANK ADMIN LOGIN");
                 label1.setForeground(Color.WHITE);
                 label1.setFont(new Font("AvantGarde", Font.BOLD, 38));
-                label1.setBounds(230, 125, 450, 40);
+                label1.setBounds(200, 125, 750, 40);
                 add(label1);
 
                 label2 = new JLabel("Email:");

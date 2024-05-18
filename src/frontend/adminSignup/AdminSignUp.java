@@ -56,7 +56,7 @@ public class AdminSignup extends JFrame {
         add(image);
 
         JLabel label1 = new JLabel("ADMIN SIGNUP FORM");
-        label1.setBounds(160, 20, 600, 40);
+        label1.setBounds(200, 20, 600, 40);
         label1.setFont(new Font("Raleway", Font.BOLD, 38));
         add(label1);
 
@@ -102,7 +102,7 @@ public class AdminSignup extends JFrame {
 
         textCPassword = new JPasswordField();
         textCPassword.setFont(new Font("Raleway", Font.BOLD, 14));
-        textCPassword.setBounds(300, 490, 400, 30);
+        textCPassword.setBounds(310, 490, 390, 30);
         add(textCPassword);
 
         JLabel labelG = new JLabel("Gender");
@@ -171,8 +171,8 @@ public class AdminSignup extends JFrame {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DashboardLogin("", "").setVisible(true);
-                setVisible(false);
+                new AdminLogin("", "");
+                dispose();
             }
         });
         add(cancel);
@@ -182,7 +182,6 @@ public class AdminSignup extends JFrame {
         setLayout(null);
         setSize(850, 800);
         setLocation(360, 40);
-        setUndecorated(true);
         setVisible(true);
 
     }

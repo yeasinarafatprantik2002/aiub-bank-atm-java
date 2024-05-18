@@ -276,7 +276,6 @@ public class Signup1 extends JFrame {
         setLayout(null);
         setSize(850, 800);
         setLocation(360, 40);
-        setUndecorated(true);
         setVisible(true);
 
     }
