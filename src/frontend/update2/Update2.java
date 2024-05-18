@@ -3,11 +3,9 @@ package frontend.update2;
 import javax.swing.*;
 
 import backend.userForm.UserForm;
-import frontend.signup3.Signup3;
 import frontend.update1.Update1;
 import frontend.update3.Update3;
 import frontend.dashboardLogin.DashboardLogin;
-import frontend.signup1.Signup1;
 import helpers.GetPathName;
 
 import java.awt.*;
@@ -247,11 +245,6 @@ public class Update2 extends JFrame {
                 } else if (e2.isSelected()) {
                     existing = "No";
                 }
-
-                // new Signup3(accountNumber, name, fname, email, add, city, state, pinCode,
-                // gender, ms, dob, religion,
-                // category, income, education, occupation, pan, aadhar, senior, existing,
-                // signup2);
 
                 new Update3(accountNumber, name, fname, email, add, city, state, pinCode,
                         gender, ms, dob, religion,

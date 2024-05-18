@@ -3,7 +3,6 @@ package frontend.update3;
 import javax.swing.*;
 
 import backend.userForm.UserForm;
-import frontend.signup2.Signup2;
 import frontend.update2.Update2;
 import helpers.GetPathName;
 import db.dbConfig.DbConfig;
@@ -11,7 +10,7 @@ import frontend.dashboardLogin.DashboardLogin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
+
 
 public class Update3 extends JFrame {
 

@@ -87,6 +87,7 @@ public class AtmLogin extends JFrame {
                                 user = new DbConfig().findUserByCardNoAndPin(cardno.trim(), pin.trim());
                                 if (user != null) {
                                         new Atm(user).setVisible(true);
+                                        setVisible(false);
                                 } else {
                                         JOptionPane.showMessageDialog(null, "Invalid Card No or Pin");
                                 }
