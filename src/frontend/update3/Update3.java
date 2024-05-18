@@ -359,6 +359,7 @@ public class Update3 extends JFrame {
         setSize(850, 800);
         setLayout(null);
         setLocation(400, 20);
+        setUndecorated(true);
         setVisible(true);
     }
 

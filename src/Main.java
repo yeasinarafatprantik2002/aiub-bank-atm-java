@@ -1,8 +1,6 @@
 import javax.swing.UIManager;
 
-import frontend.dashboardLogin.DashboardLogin;
-import frontend.adminLogin.AdminLogin;
-import frontend.adminPanel.AdminPanel;
+import frontend.home.Home;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +10,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        // new DashboardLogin("", "").setVisible(true);
-        new AdminLogin("", "").setVisible(true);
-        // new AdminPanel("", "").setVisible(true);
+        new Home().setVisible(true);
 
     }
 

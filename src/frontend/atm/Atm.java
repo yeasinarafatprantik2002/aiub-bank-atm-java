@@ -8,6 +8,7 @@ import frontend.balanceEnquriy.BalanceEnquriy;
 import frontend.dashboardLogin.DashboardLogin;
 import frontend.deposit.Deposit;
 import frontend.fastCash.FastCash;
+import frontend.home.Home;
 import frontend.pin.Pin;
 import frontend.withdrawl.Withdrawl;
 
@@ -118,7 +119,8 @@ public class Atm extends JFrame {
         b7.setBounds(700, 406, 150, 35);
         b7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                new Home().setVisible(true);
+                setVisible(false);
             }
         });
         l3.add(b7);

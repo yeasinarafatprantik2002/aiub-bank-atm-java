@@ -151,6 +151,7 @@ public class DashboardLogin extends JFrame {
                 setSize(850, 480);
                 setLocation(450, 200);
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                setUndecorated(true);
                 setVisible(true);
         }
 

@@ -167,6 +167,7 @@ public class Dashboard3 extends JFrame {
         setLayout(null);
         setLocation(400, 20);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setVisible(true);
     }
 

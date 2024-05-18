@@ -184,7 +184,7 @@ public class Dashboard1 extends JFrame {
         setLayout(null);
         setSize(850, 800);
         setLocation(360, 40);
-        // setUndecorated(true);
+        setUndecorated(true);
         setVisible(true);
 
     }

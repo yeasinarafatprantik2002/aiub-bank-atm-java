@@ -81,7 +81,8 @@ public class AtmLogin extends JFrame {
                 button1.setBounds(300, 300, 100, 30);
                 button1.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-
+                                String cardno = textField2.getText();
+                                String pin = passwordField3.getText();
                                 UserForm user;
                                 user = new DbConfig().findUserByCardNoAndPin(cardno.trim(), pin.trim());
                                 if (user != null) {
@@ -89,8 +90,6 @@ public class AtmLogin extends JFrame {
                                 } else {
                                         JOptionPane.showMessageDialog(null, "Invalid Card No or Pin");
                                 }
-                                setVisible(false);
-
                         }
                 });
                 add(button1);
@@ -134,7 +133,7 @@ public class AtmLogin extends JFrame {
                 button4.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                                 new Home().setVisible(true);
-                                setVisible(false);
+                                dispose();
                         }
                 });
                 add(button4);
@@ -149,7 +148,7 @@ public class AtmLogin extends JFrame {
                 setLayout(null);
                 setSize(850, 480);
                 setLocation(450, 200);
-                // setUndecorated(true);
+                setUndecorated(true);
                 setVisible(true);
         }
 

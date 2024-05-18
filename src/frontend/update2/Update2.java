@@ -293,6 +293,7 @@ public class Update2 extends JFrame {
         setLocation(450, 80);
         getContentPane().setBackground(new Color(252, 208, 76));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setVisible(true);
     }
 

@@ -7,16 +7,12 @@ import backend.adminForm.AdminForm;
 import backend.userForm.UserForm;
 import db.dbConfig.DbConfig;
 import frontend.adminProfile.AdminProfile;
-import frontend.signup1.Signup1;
 import frontend.update1.Update1;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// import frontend.adminProfile.AdminProfile;
-// import backend.adminForm.AdminForm;
-// import db.dbConfig.DbConfig;
 import helpers.GetPathName;
 
 public class AdminPanel extends JFrame {
@@ -230,6 +226,7 @@ public class AdminPanel extends JFrame {
         setLayout(null);
         setSize(1920, 1080);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setVisible(true);
 
     }
