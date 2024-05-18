@@ -1,18 +1,14 @@
 package frontend.adminSignup;
 
-import javax.swing.*;
-
 import backend.adminForm.AdminForm;
 import db.dbConfig.DbConfig;
 import frontend.adminLogin.AdminLogin;
-import frontend.dashboardLogin.DashboardLogin;
-import frontend.signup2.Signup2;
 import helpers.GetPathName;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 public class AdminSignup extends JFrame {
     JRadioButton r1, r2, m1, m2, m3;
