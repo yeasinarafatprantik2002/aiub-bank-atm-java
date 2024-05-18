@@ -77,6 +77,10 @@ public class Update2 extends JFrame {
 
         String religion[] = { "Muslim", "Hindu", "Christian", "Other" };
         comboBox = new JComboBox(religion);
+        if (user.getReligion() != null) {
+            comboBox.setSelectedItem(user.getReligion().trim());
+
+        }
         comboBox.setBackground(new Color(252, 208, 76));
         comboBox.setFont(new Font("Raleway", Font.BOLD, 14));
         comboBox.setBounds(350, 120, 320, 30);
@@ -89,6 +93,9 @@ public class Update2 extends JFrame {
 
         String Category[] = { "General", "OBC", "SC", "ST", "Other" };
         comboBox2 = new JComboBox(Category);
+        if (user.getCategory() != null) {
+            comboBox2.setSelectedItem(user.getCategory().trim());
+        }
         comboBox2.setBackground(new Color(252, 208, 76));
         comboBox2.setFont(new Font("Raleway", Font.BOLD, 14));
         comboBox2.setBounds(350, 170, 320, 30);
@@ -101,6 +108,9 @@ public class Update2 extends JFrame {
 
         String income[] = { "Null", "<1,50,000", "<2,50,000", "5,00,000", "Uptp 10,00,000", "Above 10,00,000" };
         comboBox3 = new JComboBox(income);
+        if (user.getIncome() != null) {
+            comboBox3.setSelectedItem(user.getIncome().trim());
+        }
         comboBox3.setBackground(new Color(252, 208, 76));
         comboBox3.setFont(new Font("Raleway", Font.BOLD, 14));
         comboBox3.setBounds(350, 220, 320, 30);
@@ -113,6 +123,9 @@ public class Update2 extends JFrame {
 
         String educational[] = { "Non-Graduate", "Graduate", "Post-Graduate", "Doctrate", "Others" };
         comboBox4 = new JComboBox(educational);
+        if (user.getEducation() != null) {
+            comboBox4.setSelectedItem(user.getEducation().trim());
+        }
         comboBox4.setBackground(new Color(252, 208, 76));
         comboBox4.setFont(new Font("Raleway", Font.BOLD, 14));
         comboBox4.setBounds(350, 270, 320, 30);
@@ -125,6 +138,9 @@ public class Update2 extends JFrame {
 
         String Occupation[] = { "Salaried", "Self-Employed", "Business", "Student", "Retired", "Other" };
         comboBox5 = new JComboBox(Occupation);
+        if (user.getOccupation() != null) {
+            comboBox5.setSelectedItem(user.getOccupation().trim());
+        }
         comboBox5.setBackground(new Color(252, 208, 76));
         comboBox5.setFont(new Font("Raleway", Font.BOLD, 14));
         comboBox5.setBounds(350, 340, 320, 30);
@@ -156,11 +172,18 @@ public class Update2 extends JFrame {
         add(l10);
 
         r1 = new JRadioButton("Yes");
+        if (user.getSenior().trim().equals("Yes")) {
+            r1.setSelected(true);
+
+        }
         r1.setFont(new Font("Raleway", Font.BOLD, 14));
         r1.setBackground(new Color(252, 208, 76));
         r1.setBounds(350, 490, 100, 30);
         add(r1);
         r2 = new JRadioButton("No");
+        if (user.getSenior().trim().equals("No")) {
+            r2.setSelected(true);
+        }
         r2.setFont(new Font("Raleway", Font.BOLD, 14));
         r2.setBackground(new Color(252, 208, 76));
         r2.setBounds(460, 490, 100, 30);
@@ -172,11 +195,17 @@ public class Update2 extends JFrame {
         add(l11);
 
         e1 = new JRadioButton("Yes");
+        if (user.getExisting().trim().equals("Yes")) {
+            e1.setSelected(true);
+        }
         e1.setFont(new Font("Raleway", Font.BOLD, 14));
         e1.setBackground(new Color(252, 208, 76));
         e1.setBounds(350, 540, 100, 30);
         add(e1);
         e2 = new JRadioButton("No");
+        if (user.getExisting().trim().equals("No")) {
+            e2.setSelected(true);
+        }
         e2.setFont(new Font("Raleway", Font.BOLD, 14));
         e2.setBackground(new Color(252, 208, 76));
         e2.setBounds(460, 540, 100, 30);
@@ -187,9 +216,9 @@ public class Update2 extends JFrame {
         l12.setBounds(700, 10, 100, 30);
         add(l12);
 
-        JLabel l13 = new JLabel(user.getAccountNumber());
+        JLabel l13 = new JLabel(" " + user.getAccountNumber());
         l13.setFont(new Font("Raleway", Font.BOLD, 14));
-        l13.setBounds(760, 10, 60, 30);
+        l13.setBounds(770, 10, 100, 30);
         add(l13);
 
         next = new JButton("Next");

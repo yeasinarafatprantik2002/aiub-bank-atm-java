@@ -98,24 +98,36 @@ public class Update3 extends JFrame {
         add(l3);
 
         r1 = new JRadioButton("Saving Account");
+        if (user.getAccountType().trim().equals("Saving Account")) {
+            r1.setSelected(true);
+        }
         r1.setFont(new Font("Raleway", Font.BOLD, 16));
         r1.setBackground(new Color(215, 252, 252));
         r1.setBounds(100, 180, 150, 30);
         add(r1);
 
         r2 = new JRadioButton("Fixed Deposit Account");
+        if (user.getAccountType().trim().equals("Fixed Deposit Account")) {
+            r2.setSelected(true);
+        }
         r2.setFont(new Font("Raleway", Font.BOLD, 16));
         r2.setBackground(new Color(215, 252, 252));
         r2.setBounds(350, 180, 300, 30);
         add(r2);
 
         r3 = new JRadioButton("Current Account");
+        if (user.getAccountType().trim().equals("Current Account")) {
+            r3.setSelected(true);
+        }
         r3.setFont(new Font("Raleway", Font.BOLD, 16));
         r3.setBackground(new Color(215, 252, 252));
         r3.setBounds(100, 220, 250, 30);
         add(r3);
 
         r4 = new JRadioButton("Recurring Deposit Account");
+        if (user.getAccountType().trim().equals("Recurring Deposit Account")) {
+            r4.setSelected(true);
+        }
         r4.setFont(new Font("Raleway", Font.BOLD, 16));
         r4.setBackground(new Color(215, 252, 252));
         r4.setBounds(350, 220, 250, 30);
@@ -179,36 +191,55 @@ public class Update3 extends JFrame {
         add(l11);
 
         c1 = new JCheckBox("ATM CARD");
+        if (user.getServices().contains("ATM Card")) {
+            c1.setSelected(true);
+
+        }
         c1.setBackground(new Color(215, 252, 252));
         c1.setFont(new Font("Raleway", Font.BOLD, 16));
         c1.setBounds(100, 500, 200, 30);
         add(c1);
 
         c2 = new JCheckBox("Internet Banking");
+        if (user.getServices().contains("Internet Banking")) {
+            c2.setSelected(true);
+        }
         c2.setBackground(new Color(215, 252, 252));
         c2.setFont(new Font("Raleway", Font.BOLD, 16));
         c2.setBounds(350, 500, 200, 30);
         add(c2);
 
         c3 = new JCheckBox("Mobile Banking");
+        if (user.getServices().contains("Mobile Banking")) {
+            c3.setSelected(true);
+        }
         c3.setBackground(new Color(215, 252, 252));
         c3.setFont(new Font("Raleway", Font.BOLD, 16));
         c3.setBounds(100, 550, 200, 30);
         add(c3);
 
         c4 = new JCheckBox("EMAIL Alerts");
+        if (user.getServices().contains("Email Alerts")) {
+            c4.setSelected(true);
+        }
         c4.setBackground(new Color(215, 252, 252));
         c4.setFont(new Font("Raleway", Font.BOLD, 16));
         c4.setBounds(350, 550, 200, 30);
         add(c4);
 
         c5 = new JCheckBox("Cheque Book");
+        if (user.getServices().contains("Cheque Book")) {
+            c5.setSelected(true);
+        }
         c5.setBackground(new Color(215, 252, 252));
         c5.setFont(new Font("Raleway", Font.BOLD, 16));
         c5.setBounds(100, 600, 200, 30);
         add(c5);
 
         c6 = new JCheckBox("E-Statement");
+        if (user.getServices().contains("E-Statement")) {
+            c6.setSelected(true);
+        }
         c6.setBackground(new Color(215, 252, 252));
         c6.setFont(new Font("Raleway", Font.BOLD, 16));
         c6.setBounds(350, 600, 200, 30);
@@ -226,9 +257,9 @@ public class Update3 extends JFrame {
         l12.setBounds(700, 10, 100, 30);
         add(l12);
 
-        JLabel l13 = new JLabel(formno);
+        JLabel l13 = new JLabel(" " + user.getAccountNumber());
         l13.setFont(new Font("Raleway", Font.BOLD, 14));
-        l13.setBounds(760, 10, 60, 30);
+        l13.setBounds(770, 10, 100, 30);
         add(l13);
 
         s = new JButton("UPDATE");
@@ -277,11 +308,12 @@ public class Update3 extends JFrame {
                 }
 
                 if (c7.isSelected()) {
+                    UserForm account = new DbConfig().findUserByAccNoAndPass(accountNumer, password);
                     UserForm user = new UserForm(accountNumer, password, name, fname, gender, email, ms,
                             add, city,
                             state, pinCode, religion, category, income, education, occupation, nid, nnid, senior,
                             existing,
-                            accountType, cardNo, pinNumber, services, dob, "0");
+                            accountType, cardNo, pinNumber, services, dob, account.getBalance());
                     new DbConfig(user).updateUser();
 
                     if (new DbConfig(user).updateUser()) {

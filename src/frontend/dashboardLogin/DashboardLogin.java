@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import backend.userForm.UserForm;
 import frontend.dashboard1.Dashboard1;
+import frontend.home.Home;
 import frontend.signup1.Signup1;
 import helpers.GetPathName;
 import db.dbConfig.DbConfig;
@@ -133,7 +134,8 @@ public class DashboardLogin extends JFrame {
                 button4.setBounds(300, 400, 230, 30);
                 button4.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                new Home().setVisible(true);
+                                setVisible(false);
                         }
                 });
                 add(button4);

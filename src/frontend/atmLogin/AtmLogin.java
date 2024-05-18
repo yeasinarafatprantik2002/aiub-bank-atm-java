@@ -6,6 +6,7 @@ import backend.userForm.UserForm;
 import db.dbConfig.DbConfig;
 import frontend.atm.Atm;
 import frontend.dashboardLogin.DashboardLogin;
+import frontend.home.Home;
 import helpers.GetPathName;
 
 import java.awt.*;
@@ -132,7 +133,8 @@ public class AtmLogin extends JFrame {
                 button4.setBounds(300, 400, 230, 30);
                 button4.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                new Home().setVisible(true);
+                                setVisible(false);
                         }
                 });
                 add(button4);

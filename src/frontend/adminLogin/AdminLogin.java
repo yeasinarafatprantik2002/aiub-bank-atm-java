@@ -4,6 +4,7 @@ import backend.adminForm.AdminForm;
 import db.dbConfig.DbConfig;
 import frontend.adminPanel.AdminPanel;
 import frontend.adminSignup.AdminSignup;
+import frontend.home.Home;
 import helpers.GetPathName;
 
 import javax.swing.*;
@@ -87,7 +88,8 @@ public class AdminLogin extends JFrame {
                                         AdminForm admin = new DbConfig().findAdminByEmailAndPass(email, password);
                                         if (admin != null) {
                                                 JOptionPane.showMessageDialog(null, "Login Successful");
-                                                new AdminPanel();
+                                                new AdminPanel(admin).setVisible(true);
+                                                dispose();
                                         } else {
                                                 JOptionPane.showMessageDialog(null, "Invalid Email or Password");
 
@@ -135,7 +137,8 @@ public class AdminLogin extends JFrame {
                 button4.setBounds(300, 400, 230, 30);
                 button4.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                                System.exit(0);
+                                new Home().setVisible(true);
+                                dispose();
                         }
                 });
                 add(button4);
