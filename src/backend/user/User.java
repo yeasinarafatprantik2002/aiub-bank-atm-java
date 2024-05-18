@@ -1,6 +1,6 @@
 package backend.user;
 
-public class UserFrom {
+public abstract class User {
     private String name;
     private String fname;;
     private String email;
@@ -28,10 +28,10 @@ public class UserFrom {
     private String password;
     private String occupation;
 
-    public UserFrom() {
+    public User() {
     }
 
-    public UserFrom(String accountNumber, String password, String name, String fname, String gender, String email,
+    public User(String accountNumber, String password, String name, String fname, String gender, String email,
             String maritalStatus,
             String add,
             String city, String state,
@@ -289,66 +289,6 @@ public class UserFrom {
                 + balance;
 
         return data;
-    }
-
-    public UserFrom parseUserFrom(String data) {
-        String[] values = data.trim().split("#");
-        String accountNumber = values[0];
-        String password = values[1];
-        String name = values[2];
-        String fname = values[3];
-        String gender = values[4];
-        String email = values[5];
-        String maritalStatus = values[6];
-        String add = values[7];
-        String city = values[8];
-        String state = values[9];
-        String pinCode = values[10];
-        String religion = values[11];
-        String category = values[12];
-        String income = values[13];
-        String education = values[14];
-        String occupation = values[15];
-        String pan = values[16];
-        String aadhar = values[17];
-        String senior = values[18];
-        String existing = values[19];
-        String accountType = values[20];
-        String cardNo = values[21];
-        String pinNumber = values[22];
-        String services = values[23];
-        String date = values[24];
-        String balance = values[25];
-
-        UserFrom user = new UserFrom();
-        user.setAccountNumber(accountNumber);
-        user.setPassword(password);
-        user.setName(name);
-        user.setFname(fname);
-        user.setGender(gender);
-        user.setEmail(email);
-        user.setMaritalStatus(maritalStatus);
-        user.setAdd(add);
-        user.setCity(city);
-        user.setState(state);
-        user.setPinCode(pinCode);
-        user.setReligion(religion);
-        user.setCategory(category);
-        user.setIncome(income);
-        user.setEducation(education);
-        user.setOccupation(occupation);
-        user.setPan(pan);
-        user.setAadhar(aadhar);
-        user.setSenior(senior);
-        user.setExisting(existing);
-        user.setAccountType(accountType);
-        user.setCardNo(cardNo);
-        user.setPinNumber(pinNumber);
-        user.setServices(services);
-        user.setDate(date);
-        user.setBalance(balance);
-
-        return user;
     }
 
 }

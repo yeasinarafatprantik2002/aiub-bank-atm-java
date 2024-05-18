@@ -2,7 +2,7 @@ package frontend.atmLogin;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import db.dbConfig.DbConfig;
 import frontend.atm.Atm;
 import frontend.dashboardLogin.DashboardLogin;
@@ -81,7 +81,7 @@ public class AtmLogin extends JFrame {
                 button1.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
 
-                                UserFrom user;
+                                UserForm user;
                                 user = new DbConfig().findUserByCardNoAndPin(cardno.trim(), pin.trim());
                                 if (user != null) {
                                         new Atm(user).setVisible(true);

@@ -2,7 +2,7 @@ package frontend.update1;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.dashboardLogin.DashboardLogin;
 import frontend.update2.Update2;
 import helpers.GetPathName;
@@ -23,7 +23,7 @@ public class Update1 extends JFrame {
     String accountNumber;
     String data;
     Update1 update1 = this;
-    UserFrom user;
+    UserForm user;
 
     private String dates[] = { "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
@@ -43,7 +43,7 @@ public class Update1 extends JFrame {
             "2015", "2016", "2017", "2018",
             "2019", "2020" };
 
-    public Update1(UserFrom user) {
+    public Update1(UserForm user) {
         super("UPDATE FORM");
         this.user = user;
         String path = GetPathName.getPathName();

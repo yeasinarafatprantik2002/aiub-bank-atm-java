@@ -2,7 +2,7 @@ package frontend.dashboardLogin;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.dashboard1.Dashboard1;
 import frontend.signup1.Signup1;
 import helpers.GetPathName;
@@ -20,7 +20,7 @@ public class DashboardLogin extends JFrame {
 
         JButton button1, button2, button3, button4;
         String accountNo, password;
-        UserFrom user;
+        UserForm user;
 
         public DashboardLogin(String accountNo, String password) {
                 super("Bank Management System");
@@ -86,16 +86,12 @@ public class DashboardLogin extends JFrame {
 
                                 user = new DbConfig().findUserByAccNoAndPass(accountNumber, password);
                                 if (user != null) {
-
+                                        setVisible(false);
                                         new Dashboard1(user);
                                 } else {
                                         JOptionPane.showMessageDialog(null,
                                                         "Invalid Account Number or Password");
-
                                 }
-
-                                setVisible(false);
-
                         }
                 });
                 add(button1);

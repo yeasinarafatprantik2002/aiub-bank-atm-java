@@ -2,8 +2,8 @@ package frontend.balanceEnquriy;
 
 import javax.swing.*;
 
-import backend.atm.AtmFrom;
-import backend.user.UserFrom;
+import backend.atm.AtmActions;
+import backend.userForm.UserForm;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,13 +17,13 @@ public class BalanceEnquriy extends JFrame {
     JLabel label2;
     JButton b1;
     Atm atm;
-    UserFrom user;
+    UserForm user;
 
-    public BalanceEnquriy(UserFrom user, Atm atm) {
+    public BalanceEnquriy(UserForm user, Atm atm) {
         this.atm = atm;
         this.user = user;
         String path = GetPathName.getPathName();
-        String balance = new AtmFrom(user).checkBalance();
+        String balance = new AtmActions(user).checkBalance();
 
         ImageIcon i1 = new ImageIcon(path + "/public/images/atm2.png");
         Image i2 = i1.getImage().getScaledInstance(1550, 830, Image.SCALE_DEFAULT);

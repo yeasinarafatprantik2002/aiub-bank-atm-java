@@ -2,8 +2,8 @@ package frontend.deposit;
 
 import javax.swing.*;
 
-import backend.atm.AtmFrom;
-import backend.user.UserFrom;
+import backend.atm.AtmActions;
+import backend.userForm.UserForm;
 
 import java.awt.*;
 import helpers.GetPathName;
@@ -16,10 +16,10 @@ public class Deposit extends JFrame {
     TextField textField;
 
     JButton b1, b2;
-    UserFrom user;
+    UserForm user;
     Atm atm;
 
-    public Deposit(UserFrom user, Atm atm) {
+    public Deposit(UserForm user, Atm atm) {
         super("DEPOSIT");
         this.user = user;
         this.atm = atm;
@@ -60,7 +60,7 @@ public class Deposit extends JFrame {
                         JOptionPane.showMessageDialog(null, "Amount must be multiple of 100");
                         return;
                     }
-                    if (new AtmFrom(user).deposit(amount1)) {
+                    if (new AtmActions(user).deposit(amount1)) {
                         JOptionPane.showMessageDialog(null, "Amount Deposited Successfully");
                     } else {
                         JOptionPane.showMessageDialog(null, "Amount Deposited Failed");

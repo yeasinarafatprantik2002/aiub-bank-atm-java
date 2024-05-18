@@ -2,8 +2,8 @@ package frontend.withdrawl;
 
 import javax.swing.*;
 
-import backend.atm.AtmFrom;
-import backend.user.UserFrom;
+import backend.atm.AtmActions;
+import backend.userForm.UserForm;
 import frontend.atm.Atm;
 import helpers.GetPathName;
 
@@ -15,11 +15,11 @@ public class Withdrawl extends JFrame {
     String pin;
     TextField textField;
     Atm atm;
-    UserFrom user;
+    UserForm user;
 
     JButton b1, b2;
 
-    public Withdrawl(UserFrom user, Atm atm) {
+    public Withdrawl(UserForm user, Atm atm) {
         super("WITHDRAWL");
         this.atm = atm;
         this.user = user;
@@ -67,7 +67,7 @@ public class Withdrawl extends JFrame {
                     } else if (amount1 > 10000) {
                         JOptionPane.showMessageDialog(null, "Maximum Withdrawal amount is 10,000");
                     } else {
-                        new AtmFrom(user).withdraw(amount1);
+                        new AtmActions(user).withdraw(amount1);
                         JOptionPane.showMessageDialog(null, "Tk. " + amount1 + " Debited Successfully");
                         new Atm(user).setVisible(true);
 

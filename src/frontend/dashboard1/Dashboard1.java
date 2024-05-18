@@ -2,7 +2,7 @@ package frontend.dashboard1;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import helpers.GetPathName;
 import frontend.dashboard2.Dashboard2;
 
@@ -21,9 +21,9 @@ public class Dashboard1 extends JFrame {
     String first = " " + Math.abs(first4);
     String data;
     Dashboard1 dashboard = this;
-    UserFrom user;
+    UserForm user;
 
-    public Dashboard1(UserFrom user) {
+    public Dashboard1(UserForm user) {
 
         super("DASHBOARD");
         this.user = user;

@@ -2,7 +2,7 @@ package frontend.atm;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.atmLogin.AtmLogin;
 import frontend.balanceEnquriy.BalanceEnquriy;
 import frontend.dashboardLogin.DashboardLogin;
@@ -19,9 +19,9 @@ public class Atm extends JFrame {
     JButton b1, b2, b3, b4, b5, b6, b7, b8;
     String pin;
     Atm atm = this;
-    UserFrom user;
+    UserForm user;
 
-    public Atm(UserFrom user) {
+    public Atm(UserForm user) {
         super("ATM");
         this.user = user;
 
@@ -69,7 +69,7 @@ public class Atm extends JFrame {
         b3.setBounds(410, 318, 150, 35);
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new FastCash(user,atm).setVisible(true);
+                new FastCash(user, atm).setVisible(true);
                 setVisible(false);
 
             }
@@ -82,7 +82,7 @@ public class Atm extends JFrame {
         b5.setBounds(410, 362, 150, 35);
         b5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Pin(user,atm).setVisible(true);
+                new Pin(user, atm).setVisible(true);
                 setVisible(false);
             }
         });
@@ -106,7 +106,7 @@ public class Atm extends JFrame {
         b6.setBounds(700, 318, 150, 35);
         b6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new BalanceEnquriy(user,atm).setVisible(true);
+                new BalanceEnquriy(user, atm).setVisible(true);
                 setVisible(false);
             }
         });

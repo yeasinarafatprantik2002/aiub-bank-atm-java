@@ -2,7 +2,7 @@ package frontend.dashboard2;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.dashboard1.Dashboard1;
 import frontend.dashboard3.Dashboard3;
 import helpers.GetPathName;
@@ -19,9 +19,9 @@ public class Dashboard2 extends JFrame {
     Dashboard1 dashboard1;
     Dashboard2 dashboard2 = this;
     boolean flag;
-    UserFrom user;
+    UserForm user;
 
-    public Dashboard2(Dashboard1 dashboard1, boolean flag, UserFrom user) {
+    public Dashboard2(Dashboard1 dashboard1, boolean flag, UserForm user) {
         super("DASHBOARD");
         String path = GetPathName.getPathName();
 

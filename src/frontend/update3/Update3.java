@@ -2,7 +2,7 @@ package frontend.update3;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.signup2.Signup2;
 import frontend.update2.Update2;
 import helpers.GetPathName;
@@ -41,13 +41,13 @@ public class Update3 extends JFrame {
     String senior;
     String existing;
     Update2 update2;
-    UserFrom user;
+    UserForm user;
 
     public Update3(String accountNumer, String name, String fname, String email, String add,
             String city, String state,
             String pinCode, String gender, String ms, String dob, String religion, String category, String income,
             String education, String occupation, String pan, String aadhar, String senior, String existing,
-            Update2 update2, UserFrom user) {
+            Update2 update2, UserForm user) {
 
         super("UPDATE FORM");
         this.accountNumer = accountNumer;
@@ -277,7 +277,7 @@ public class Update3 extends JFrame {
                 }
 
                 if (c7.isSelected()) {
-                    UserFrom user = new UserFrom(accountNumer, password, name, fname, gender, email, ms,
+                    UserForm user = new UserForm(accountNumer, password, name, fname, gender, email, ms,
                             add, city,
                             state, pinCode, religion, category, income, education, occupation, nid, nnid, senior,
                             existing,

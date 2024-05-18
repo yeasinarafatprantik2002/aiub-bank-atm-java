@@ -1,19 +1,19 @@
 package helpers.interfaces.iUserOperations;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 
 public interface IUserOperations {
 
     public void save();
 
-    public UserFrom findUserByAccNoAndPass(String accountNumber, String Password);
+    public UserForm findUserByAccNoAndPass(String accountNumber, String Password);
 
-    public UserFrom findUserByCardNoAndPin(String cardNo, String pin);
+    public UserForm findUserByCardNoAndPin(String cardNo, String pin);
 
     public boolean updateUser();
 
     public boolean deleteUser(String id);
 
-    public UserFrom[] findAll();
+    public UserForm[] findAll();
 
 }

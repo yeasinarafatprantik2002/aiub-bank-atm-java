@@ -2,7 +2,7 @@ package frontend.signup3;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.signup2.Signup2;
 import helpers.GetPathName;
 import db.dbConfig.DbConfig;
@@ -274,7 +274,7 @@ public class Signup3 extends JFrame {
                 }
 
                 if (c7.isSelected()) {
-                    UserFrom user = new UserFrom(accountNumer, password, name, fname, gender, email, ms,
+                    UserForm user = new UserForm(accountNumer, password, name, fname, gender, email, ms,
                             add, city,
                             state, pinCode, religion, category, income, education, occupation, nid, nnid, senior,
                             existing,

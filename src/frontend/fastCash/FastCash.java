@@ -2,8 +2,8 @@ package frontend.fastCash;
 
 import javax.swing.*;
 
-import backend.atm.AtmFrom;
-import backend.user.UserFrom;
+import backend.atm.AtmActions;
+import backend.userForm.UserForm;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,9 +15,9 @@ public class FastCash extends JFrame {
     JButton b1, b2, b3, b4, b5, b6, b7, b8;
     String pin;
     Atm atm;
-    UserFrom user;
+    UserForm user;
 
-    public FastCash(UserFrom user, Atm atm) {
+    public FastCash(UserForm user, Atm atm) {
         this.atm = atm;
         this.user = user;
         String path = GetPathName.getPathName();
@@ -41,7 +41,7 @@ public class FastCash extends JFrame {
         b1.setBounds(410, 274, 150, 35);
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(100)) {
+                if (new AtmActions(user).withdraw(100)) {
                     JOptionPane.showMessageDialog(null, "Tk. 100 Debited Successfully");
                     new Atm(user).setVisible(true);
                 } else {
@@ -57,7 +57,7 @@ public class FastCash extends JFrame {
         b2.setBounds(700, 274, 150, 35);
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(500)) {
+                if (new AtmActions(user).withdraw(500)) {
                     JOptionPane.showMessageDialog(null, "Tk. 500 Debited Successfully");
                     new Atm(user).setVisible(true);
 
@@ -75,7 +75,7 @@ public class FastCash extends JFrame {
         b3.setBounds(410, 318, 150, 35);
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(1000)) {
+                if (new AtmActions(user).withdraw(1000)) {
                     JOptionPane.showMessageDialog(null, "Tk. 1000 Debited Successfully");
                     new Atm(user).setVisible(true);
 
@@ -93,7 +93,7 @@ public class FastCash extends JFrame {
         b4.setBounds(700, 318, 150, 35);
         b4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(2000)) {
+                if (new AtmActions(user).withdraw(2000)) {
                     JOptionPane.showMessageDialog(null, "Tk. 2000 Debited Successfully");
                     new Atm(user).setVisible(true);
 
@@ -111,7 +111,7 @@ public class FastCash extends JFrame {
         b5.setBounds(410, 362, 150, 35);
         b5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(5000)) {
+                if (new AtmActions(user).withdraw(5000)) {
                     JOptionPane.showMessageDialog(null, "Tk. 5000 Debited Successfully");
                     new Atm(user).setVisible(true);
 
@@ -129,7 +129,7 @@ public class FastCash extends JFrame {
         b6.setBounds(700, 362, 150, 35);
         b6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(10000)) {
+                if (new AtmActions(user).withdraw(10000)) {
                     JOptionPane.showMessageDialog(null, "Tk. 10000 Debited Successfully");
                     new Atm(user).setVisible(true);
 
@@ -148,7 +148,7 @@ public class FastCash extends JFrame {
         b8.setBounds(410, 406, 150, 35);
         b8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (new AtmFrom(user).withdraw(20000)) {
+                if (new AtmActions(user).withdraw(20000)) {
                     JOptionPane.showMessageDialog(null, "Tk. 20000 Debited Successfully");
                     new Atm(user).setVisible(true);
 

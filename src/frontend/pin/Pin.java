@@ -2,8 +2,8 @@ package frontend.pin;
 
 import javax.swing.*;
 
-import backend.atm.AtmFrom;
-import backend.user.UserFrom;
+import backend.atm.AtmActions;
+import backend.userForm.UserForm;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,9 +17,9 @@ public class Pin extends JFrame {
     JPasswordField p1, p2;
     String pin;
     Atm atm;
-    UserFrom user;
+    UserForm user;
 
-    public Pin(UserFrom user, Atm atm) {
+    public Pin(UserForm user, Atm atm) {
         this.atm = atm;
         this.user = user;
         String path = GetPathName.getPathName();
@@ -75,7 +75,7 @@ public class Pin extends JFrame {
 
                     if (pin1.length() != 4) {
 
-                        if (new AtmFrom(user).changePin(pin1)) {
+                        if (new AtmActions(user).changePin(pin1)) {
                             JOptionPane.showMessageDialog(null, "PIN changed successfully");
                             atm.setVisible(true);
                         } else {

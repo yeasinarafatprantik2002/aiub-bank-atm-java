@@ -2,7 +2,7 @@ package frontend.update2;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.signup3.Signup3;
 import frontend.update1.Update1;
 import frontend.update3.Update3;
@@ -32,10 +32,10 @@ public class Update2 extends JFrame {
     String dob;
     Update1 update1;
     Update2 update2 = this;
-    UserFrom user;
+    UserForm user;
 
     public Update2(String accountNumber, String name, String fname, String email, String add, String city, String state,
-            String pinCode, String gender, String ms, String dob, Update1 update1, UserFrom user) {
+            String pinCode, String gender, String ms, String dob, Update1 update1, UserForm user) {
         super("APPLICATION FORM");
         String path = GetPathName.getPathName();
 

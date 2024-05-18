@@ -2,7 +2,7 @@ package frontend.dashboard3;
 
 import javax.swing.*;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import frontend.atmLogin.AtmLogin;
 import frontend.dashboard2.Dashboard2;
 import frontend.dashboardLogin.DashboardLogin;
@@ -21,9 +21,9 @@ public class Dashboard3 extends JFrame {
     String data;
     Dashboard2 dashboard2;
     boolean flag;
-    UserFrom user;
+    UserForm user;
 
-    public Dashboard3(UserFrom user, Dashboard2 dashboard2, boolean flag) {
+    public Dashboard3(UserForm user, Dashboard2 dashboard2, boolean flag) {
         super("DASHBOARD");
         this.dashboard2 = dashboard2;
         this.flag = flag;

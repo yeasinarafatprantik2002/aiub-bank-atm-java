@@ -1,14 +1,14 @@
 package backend.atm;
 
-import backend.user.UserFrom;
+import backend.userForm.UserForm;
 import db.dbConfig.DbConfig;
 import helpers.interfaces.iAtmOperations.IAtmOperations;
 
-public class AtmFrom implements IAtmOperations {
-    private UserFrom user;
+public class AtmActions implements IAtmOperations {
+    private UserForm user;
     private int balance;
 
-    public AtmFrom(UserFrom user) {
+    public AtmActions(UserForm user) {
         this.user = user;
         this.balance = Integer.parseInt(user.getBalance());
     }
