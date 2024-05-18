@@ -4,13 +4,25 @@ public class Admin {
     private String name;
     private String email;
     private String password;
+    private String gender;
+    private static String id;
+    private static int count = 0;
+
+    static {
+        id = "A" + String.format("%03d", count);
+    }
+
+    {
+        count++;
+    }
 
     public Admin() {
     }
 
-    public Admin(String name, String email, String password) {
+    public Admin(String name, String email, String gender, String password) {
         this.name = name;
         this.email = email;
+        this.gender = gender;
         this.password = password;
 
     }
@@ -39,9 +51,21 @@ public class Admin {
         return password;
     }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        String data = name + "#" + email + "#" + password;
+        String data = id + "#" + name + "#" + email + "#" + password + "#" + gender;
 
         return data;
 

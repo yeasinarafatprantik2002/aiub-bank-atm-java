@@ -5,13 +5,14 @@ import backend.admin.Admin;
 public class AdminForm extends Admin {
 
     private String role = "admin";
+    private String id;
 
     public AdminForm() {
         super();
     }
 
-    public AdminForm(String name, String email, String password) {
-        super(name, email, password);
+    public AdminForm(String name, String email, String password, String gender) {
+        super(name, email, gender, password);
 
     }
 
@@ -21,6 +22,10 @@ public class AdminForm extends Admin {
 
     public String getRole() {
         return role;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -33,11 +38,13 @@ public class AdminForm extends Admin {
 
     public AdminForm parseAdminForm(String data) {
         String[] values = data.trim().split("#");
-        String name = values[0];
-        String email = values[1];
-        String password = values[2];
+        id = values[0];
+        String name = values[1];
+        String email = values[2];
+        String password = values[3];
+        String gender = values[4];
 
-        return new AdminForm(name, email, password);
+        return new AdminForm(name, email, password, gender);
     }
 
 }
